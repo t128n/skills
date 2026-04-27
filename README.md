@@ -5,9 +5,14 @@ Collection of skills to use for [agentic engineering](https://t128n.dev/writing/
 ## Setup
 
 ```sh
+pnpm dlx skills add t128n/skills
+
 # Remote skills
 pnpm dlx skills add mattpocock/skills
 pnpm dlx skills add anthropics/knowledge-work-plugins
+pnpm dlx skills add anthropics/skills/pptx
+pnpm dlx skills add anthropics/skills/docx
+pnpm dlx skills add anthropics/skills/xlsx
 pnpm dlx skills add github/awesome-copilot/gh-cli
 pnpm dlx skills add github/awesome-copilot/excalidraw-diagram-generator
 pnpm dlx skills add vercel-labs/skills/find-skills
