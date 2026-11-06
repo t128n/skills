@@ -11,6 +11,17 @@ import {
 } from "#lib/types.ts";
 import { fail, sha256 } from "#lib/utils.ts";
 
+export function descriptionWithSource(description: string, sourceUrl: string): string {
+  const suffix = ` [source: ${sourceUrl}]`;
+  const available = 1024 - suffix.length;
+  if (available < 1) fail("source URL is too long for a skill description");
+  if (description.length <= available) return description + suffix;
+  // Leave room for the ellipsis without splitting a surrogate pair.
+  let prefix = description.slice(0, available - 1);
+  if (/[\uD800-\uDBFF]$/.test(prefix)) prefix = prefix.slice(0, -1);
+  return prefix.trimEnd() + "…" + suffix;
+}
+
 export class SkillRegistry {
   private readonly entries = new Map<string, SkillIndexEntry>();
   private readonly outDir: string;
@@ -55,10 +66,13 @@ export class SkillRegistry {
    */
   async emitDir(
     dir: string,
-    options: { as?: string; how?: string } = {},
+    options: { as?: string; how?: string; sourceUrl?: string } = {},
   ): Promise<SkillIndexEntry> {
     const fm = readFrontmatter(join(dir, "SKILL.md"));
     const name = options.as ?? fm.name;
+    const description = options.sourceUrl
+      ? descriptionWithSource(fm.description, options.sourceUrl)
+      : fm.description;
     const files = listFiles(dir);
     if (!files.includes("SKILL.md")) {
       fail(`${dir}: no SKILL.md at the skill root`);
@@ -70,7 +84,7 @@ export class SkillRegistry {
       const entry: SkillIndexEntry = {
         name,
         type: "skill-md",
-        description: fm.description,
+        description,
         url: `${name}/SKILL.md`,
         digest: sha256(bytes),
       };
@@ -83,7 +97,7 @@ export class SkillRegistry {
     const entry: SkillIndexEntry = {
       name,
       type: "archive",
-      description: fm.description,
+      description,
       url: `${name}.tar.gz`,
       digest: sha256(bytes),
     };

@@ -107,6 +107,7 @@ export async function buildSiteSkill(
       const emitted = await registry.emitDir(dir, {
         as: item.as ?? entry.name,
         how: `multi-file skill archived from ${new URL(base).host}`,
+        sourceUrl: `${dirUrl}/${encodeURIComponent(entry.name)}/${encodeURIComponent(entry.files.find((file) => file.toLowerCase() === "skill.md") ?? "SKILL.md")}`,
       });
       digest = emitted.digest;
     }

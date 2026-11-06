@@ -14,6 +14,11 @@ export interface BuildGithubOptions {
   createTmpDir: () => string;
 }
 
+export function githubSourceUrl(repo: string, commit: string, relativeDir: string): string {
+  const path = relativeDir === "." ? "" : `/${relativeDir.split("/").map(encodeURIComponent).join("/")}`;
+  return `https://github.com/${repo}/tree/${commit}${path}`;
+}
+
 export async function buildGithubSkill(
   item: GithubSkillConfig,
   options: BuildGithubOptions,
@@ -58,9 +63,14 @@ export async function buildGithubSkill(
       `linked to GitHub @ ${commit.slice(0, 7)}`,
     );
   } else {
+    const rel = posix(relative(repoDir, skillDir));
+    const sourceUrl = ghMatch
+      ? githubSourceUrl(ghMatch[1], commit, rel)
+      : repoUrl.replace(/\.git$/, "");
     await registry.emitDir(skillDir, {
       as: item.as,
       how: `multi-file skill archived from GitHub @ ${commit.slice(0, 7)}`,
+      sourceUrl,
     });
   }
 }
