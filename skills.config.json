@@ -79,6 +79,26 @@
     {
       "source": "anthropics/skills",
       "skill": "internal-comms"
+    },
+    {
+      "source": "anthropics/knowledge-work-plugins",
+      "skill": "code-review"
+    },
+    {
+      "source": "anthropics/knowledge-work-plugins",
+      "skill": "roadmap-update"
+    },
+    {
+      "source": "anthropics/knowledge-work-plugins",
+      "skill": "runbook"
+    },
+    {
+      "source": "anthropics/knowledge-work-plugins",
+      "skill": "tech-debt"
+    },
+    {
+      "source": "anthropics/knowledge-work-plugins",
+      "skill": "sprint-planning"
     }
   ]
 }
