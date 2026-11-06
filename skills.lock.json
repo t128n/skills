@@ -17,9 +17,6 @@
   "vercel-labs/opensrc#opensrc": {
     "commit": "b51de60867e806da1839b33dd29c29424f12521b"
   },
-  "vercel-labs/lat.md#lat-md": {
-    "commit": "43f932d36c088a8bdeaa21ad014d6fb5273e214f"
-  },
   "vercel-labs/portless#portless": {
     "commit": "49586cfa566ffce8dcc4368f0b74fce560dced49"
   },

@@ -25,10 +25,6 @@
       "skill": "opensrc"
     },
     {
-      "source": "vercel-labs/lat.md",
-      "skill": "lat-md"
-    },
-    {
       "source": "vercel-labs/portless",
       "skill": "portless"
     },
