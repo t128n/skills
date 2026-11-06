@@ -1,0 +1,44 @@
+name: Update upstream skills
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-skills
+  cancel-in-progress: true
+
+jobs:
+  update-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Scan upstream skills and update skills.lock.json
+        run: bun run skills:update
+
+      - name: Create Pull Request with updated skills.lock.json
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(skills): update skills.lock.json"
+          title: "chore(skills): update upstream skills lockfile"
+          body: |
+            Automated scan detected upstream updates for skills configured in `skills.config.json`.
+
+            This PR updates `skills.lock.json` with the latest resolved commit SHAs and content digests.
+          branch: chore/update-skills-lock
+          delete-branch: true
+          add-paths: |
+            skills.lock.json

@@ -1,0 +1,29 @@
+{
+  "name": "skills-site",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*",
+    "#lib/*": "./src/lib/*"
+  },
+  "scripts": {
+    "build": "bun src/index.ts",
+    "build:update": "bun src/index.ts --update",
+    "skills:install": "bun src/index.ts --lock-only",
+    "skills:update": "bun src/index.ts --update --lock-only",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=24.4.0"
+  },
+  "dependencies": {
+    "@11ty/gray-matter": "^3.0.0",
+    "modern-tar": "^0.8.6",
+    "tinyglobby": "^0.2.17",
+    "valibot": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  }
+}

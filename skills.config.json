@@ -1,0 +1,80 @@
+{
+  "external": [
+    {
+      "source": "vercel-labs/skills",
+      "skill": "find-skills"
+    },
+    {
+      "source": "antfu/ghfs",
+      "skill": "ghfs"
+    },
+    {
+      "source": "vercel-labs/agent-browser",
+      "skill": "agent-browser"
+    },
+    {
+      "source": "vercel-labs/agent-desktop",
+      "skill": "agent-desktop"
+    },
+    {
+      "source": "vercel-labs/webreel",
+      "skill": "webreel"
+    },
+    {
+      "source": "vercel-labs/opensrc",
+      "skill": "opensrc"
+    },
+    {
+      "source": "vercel-labs/lat.md",
+      "skill": "lat-md"
+    },
+    {
+      "source": "vercel-labs/portless",
+      "skill": "portless"
+    },
+    {
+      "source": "vercel-labs/deepsec",
+      "skill": "deepsec"
+    },
+    {
+      "source": "vercel-labs/agent-skills",
+      "skill": "web-design-guidelines"
+    },
+    {
+      "source": "vercel-labs/agent-skills",
+      "skill": "writing-guidelines"
+    },
+    {
+      "source": "mattpocock/skills",
+      "skill": "grill-me"
+    },
+    {
+      "source": "mattpocock/skills",
+      "skill": "grilling"
+    },
+    {
+      "site": "https://hugorcd.com",
+      "skill": "document-pr"
+    },
+    {
+      "site": "https://hugorcd.com",
+      "skill": "setup-for-oss"
+    },
+    {
+      "site": "https://hugorcd.com",
+      "skill": "create-pr-commit"
+    },
+    {
+      "site": "https://hugorcd.com",
+      "skill": "unslop"
+    },
+    {
+      "site": "https://hugorcd.com",
+      "skill": "pr-writing"
+    },
+    {
+      "source": "anthropics/skills",
+      "skill": "skill-creator"
+    }
+  ]
+}
