@@ -75,6 +75,10 @@
     {
       "source": "anthropics/skills",
       "skill": "skill-creator"
+    },
+    {
+      "source": "anthropics/skills",
+      "skill": "internal-comms"
     }
   ]
 }
