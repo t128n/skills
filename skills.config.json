@@ -95,10 +95,6 @@
     {
       "source": "anthropics/knowledge-work-plugins",
       "skill": "sprint-planning"
-    },
-    {
-      "source": "github/awesome-copilot",
-      "skill": "gh-cli"
     }
   ]
 }
