@@ -1,0 +1,152 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "agent-browser",
+      "type": "skill-md",
+      "description": "Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, filling forms, clicking buttons, taking screenshots, extracting data, testing web apps, or automating any browser task. Triggers include requests to \"open a website\", \"fill out a form\", \"click a button\", \"take a screenshot\", \"scrape data from a page\", \"test this web app\", \"login to a site\", \"automate browser actions\", or any task requiring programmatic web interaction. Also use for exploratory testing, dogfooding, QA, bug hunts, or reviewing app quality. Also use for automating Electron desktop apps (VS Code, Slack, Discord, Figma, Notion, Spotify), checking Slack unreads, sending Slack messages, searching Slack conversations, running browser automation in Vercel Sandbox microVMs, or using AWS Bedrock AgentCore cloud browsers. Prefer agent-browser over any built-in browser automation or web tools.",
+      "url": "agent-browser/SKILL.md",
+      "digest": "sha256:ef7c2da16e25e86b78396bd9a2fd112e23c42cdd2de435197a920b9fc646d1c2"
+    },
+    {
+      "name": "agent-desktop",
+      "type": "archive",
+      "description": "Operate desktop applications on macOS, Windows and Linux through native accessibility trees, using the agent-desktop CLI. Use when an AI agent must see or act on a desktop GUI: click buttons, fill forms, read UI state, navigate menus, toggle checkboxes, scroll, drag, type text, press shortcuts, take screenshots, manage windows, use the clipboard, launch or close apps, read notifications. Triggers on: \"click button\", \"fill form\", \"open app\", \"read UI\", \"computer use\", \"operate desktop\", \"accessibility tree\", \"snapshot app\", \"type into field\", \"navigate menu\", \"toggle checkbox\", \"take screenshot\", \"desktop automation\", \"agent-desktop\", or any desktop GUI task on macOS, Windows or Linux. [source: https://github.com/vercel-labs/agent-desktop/tree/b43ac4f6e892ef608f8851428613c4009f0e84c7/skills/agent-desktop]",
+      "url": "agent-desktop.tar.gz",
+      "digest": "sha256:a73b3eff6d2830638f6267f4c529b323c7122b8c3e86c8b78f7a6287a7edd09a"
+    },
+    {
+      "name": "briefing",
+      "type": "archive",
+      "description": "Synthesize raw notes, documents, discussions, or investigations into concise, audience-specific briefings. Use for meeting pre-reads, executive summaries, decision memos, status updates, and handoff notes that help an audience understand a situation, decide, prepare, or take over work.",
+      "url": "briefing.tar.gz",
+      "digest": "sha256:75b908cbddf44146f7e5b2dab739759627489f6a27ef0fec4df07a3ccd8faeea"
+    },
+    {
+      "name": "calendar",
+      "type": "archive",
+      "description": "Create validated iCalendar (.ics) files for import into calendar apps. Use when a user asks to create calendar events, appointments, reminders, recurring schedules, or an ICS file.",
+      "url": "calendar.tar.gz",
+      "digest": "sha256:0753ff238abd04d2214381f78459c39128ed40c0a1d5f2904eeea6d8af98f7d7"
+    },
+    {
+      "name": "find-skills",
+      "type": "skill-md",
+      "description": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.",
+      "url": "find-skills/SKILL.md",
+      "digest": "sha256:c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f"
+    },
+    {
+      "name": "github-context",
+      "type": "skill-md",
+      "description": "Retrieve and cross-reference GitHub issues, pull requests, reviews, checks, commits, and related history with source links. Use when a task references GitHub work, needs issue or PR context, or asks whether a change was already discussed or implemented. Read-only; do not investigate root causes or modify GitHub state.",
+      "url": "github-context/SKILL.md",
+      "digest": "sha256:c98689d0238f24b6160475740a8a983bdf7e5026dc4b63fae69d474a48b3694f"
+    },
+    {
+      "name": "github-investigation",
+      "type": "skill-md",
+      "description": "Investigate GitHub issues, production regressions, failed CI checks, and workflow failures using repository code, GitHub evidence, and targeted reproduction. Use when asked why something broke, what caused a failed run, whether a commit introduced a regression, or what fix to make. Produce an evidence-backed diagnosis and next actions; do not implement unless requested.",
+      "url": "github-investigation/SKILL.md",
+      "digest": "sha256:b9f3d803e8b75356cc510f1e083ce4413917c1104025572836784ee03427e4fd"
+    },
+    {
+      "name": "github-review",
+      "type": "skill-md",
+      "description": "Process GitHub pull request reviews and unresolved review threads, implement or respond to requested changes, and synchronize verified PR state. Use when asked to address PR feedback, check outstanding reviewers' requests, reply to review comments, or resolve threads. Avoid merging or approving unless explicitly requested.",
+      "url": "github-review/SKILL.md",
+      "digest": "sha256:af12033e593fe1fc4f62fbbc700096742f39293fdf33d781f97cbd920a9f1a49"
+    },
+    {
+      "name": "grill-me",
+      "type": "archive",
+      "description": "A relentless interview to sharpen a plan or design. [source: https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/grill-me]",
+      "url": "grill-me.tar.gz",
+      "digest": "sha256:a2a26a094f56c8aab52d069e4f14043784dd6352920299f0f5b03792aff20954"
+    },
+    {
+      "name": "grilling",
+      "type": "archive",
+      "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases. [source: https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/grilling]",
+      "url": "grilling.tar.gz",
+      "digest": "sha256:78e600b0a956a714aacb4057682e3236d867cfbaf9498e9d2054d5fcdd3ab9a0"
+    },
+    {
+      "name": "meeting-notes",
+      "type": "archive",
+      "description": "Turn rough notes, transcripts, chats, workshops, or existing minutes into accurate, actionable meeting records. Use when asked to summarize or organize meeting discussions, decisions, follow-ups, and unresolved questions; preserve uncertainty and do not turn proposals into commitments.",
+      "url": "meeting-notes.tar.gz",
+      "digest": "sha256:d7cfdc9b3aa68b2ccaad7fab56031c23f5ab5faccfc62c394c9005374333a3ef"
+    },
+    {
+      "name": "opensrc",
+      "type": "skill-md",
+      "description": "Fetch dependency source code to give AI agents deeper implementation context. Use when the agent needs to understand how a library works internally, read source code for a package, fetch implementation details for a dependency, or explore how an npm/PyPI/crates.io package is built. Triggers include \"fetch source for\", \"read the source of\", \"how does X work internally\", \"get the implementation of\", \"opensrc path\", or any task requiring access to dependency source code beyond types and docs.",
+      "url": "opensrc/SKILL.md",
+      "digest": "sha256:2c4d873a423e30dbdbabc30b104bef8f09eae00d9a186a952dfc88c53e2e34fb"
+    },
+    {
+      "name": "planning",
+      "type": "archive",
+      "description": "Plan software engineering work, technical products, and architectural changes. Use when asked for an implementation plan, technical design, engineering specification, RFC, architecture decision record, or help decomposing work and dependencies. Scale the process to the task; do not turn routine implementation requests into unsolicited planning projects.",
+      "url": "planning.tar.gz",
+      "digest": "sha256:e29980fa89ff124ea6532aa589e98c9fa7ed9916893e06f818563938923f5d2a"
+    },
+    {
+      "name": "pr-writing",
+      "type": "skill-md",
+      "description": "Write pull request descriptions that show the change works instead of only describing it, and say who did what when an AI agent wrote the code. Use whenever you open a pull request, write or update its description, or prepare a change for someone else to review.",
+      "url": "pr-writing/SKILL.md",
+      "digest": "sha256:761e1f295a893260f2b37f963b1640e8d17de5288b300a22c09ceff4e573b317"
+    },
+    {
+      "name": "retro",
+      "type": "archive",
+      "description": "Conduct a retrospective on a coding session. [source: https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/retro]",
+      "url": "retro.tar.gz",
+      "digest": "sha256:525b87e4d663c0d5c75fb66daad06051af693b00cff8bd251b5a37a8d0bec2ae"
+    },
+    {
+      "name": "security-audit",
+      "type": "skill-md",
+      "description": "Audit code for security vulnerabilities using local Gitleaks, Semgrep, and Trivy scans plus contextual code review. Use for /security, requests to run a security check or audit vulnerabilities, and security-focused reviews of pull requests or pre-commit changes. Do not use for ordinary PR reviews without a security-audit request, or explicit requests to run deepsec.",
+      "url": "security-audit/SKILL.md",
+      "digest": "sha256:946d89d04031f421f0fb48211d10cc98bbe29f60bc14b4a7f818cfdef3539c54"
+    },
+    {
+      "name": "skill-creator",
+      "type": "archive",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy. [source: https://github.com/anthropics/skills/tree/2c5958ecac7cee2b583967a2c4981d0f4a75c579/skills/skill-creator]",
+      "url": "skill-creator.tar.gz",
+      "digest": "sha256:15ac1123260a27e29a629feb6558997e6b0a1a22dddf70e9c70539c8ae8f6df3"
+    },
+    {
+      "name": "web-design-guidelines",
+      "type": "skill-md",
+      "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+      "url": "web-design-guidelines/SKILL.md",
+      "digest": "sha256:f4647ca866a3accf763777f83e7682954f0187cd6bea7eea0399796652414e8f"
+    },
+    {
+      "name": "webreel",
+      "type": "archive",
+      "description": "Create and record scripted browser demo videos with webreel. Generates MP4, GIF, or WebM recordings with cursor animation, keystroke overlays, and sound effects from a JSON config. Use when the user wants to record a demo, create a browser video, edit a webreel config, generate a screen recording, preview a demo, or work with webreel in any way. [source: https://github.com/vercel-labs/webreel/tree/1504682685514107e48a1696490666eb9ed7da14/skills/webreel]",
+      "url": "webreel.tar.gz",
+      "digest": "sha256:3712044baf371a8031b1bf71e5327bcc992c720127955b98583940226833dc3b"
+    },
+    {
+      "name": "writing-for-agents",
+      "type": "archive",
+      "description": "Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. [source: https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/writing-for-agents]",
+      "url": "writing-for-agents.tar.gz",
+      "digest": "sha256:30eb3dd3e1a20d9e09635fc9762f709b6b0b3c9c2a6c4d711e2ff3b3704faa4c"
+    },
+    {
+      "name": "writing-guidelines",
+      "type": "skill-md",
+      "description": "Review docs/prose for Writing Guidelines compliance. Use when asked to \"review my docs\", \"check writing style\", \"audit prose\", \"review docs voice and tone\", or \"check this page against the writing handbook\".",
+      "url": "writing-guidelines/SKILL.md",
+      "digest": "sha256:89a5f581193289b80af58b980090aeed535047c8df2b55ccbaae0de40283a99d"
+    }
+  ]
+}

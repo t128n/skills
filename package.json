@@ -1,70 +1,29 @@
 {
-  "name": "@t128n/skills",
-  "version": "0.1.0",
-  "description": "A curated pack of agent skills.",
-  "files": [
-    "skills"
-  ],
-  "skills": [
-    {
-      "source": "anthropics/knowledge-work-plugins",
-      "ref": "e050c2ec856373787143d7057663a6ebd1277df3",
-      "skills": ["code-review", "roadmap-update", "runbook", "sprint-planning", "tech-debt"]
-    },
-    {
-      "source": "anthropics/skills",
-      "ref": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
-      "skills": ["internal-comms", "skill-creator"]
-    },
-    {
-      "source": "antfu/ghfs",
-      "ref": "6dce9c1a30a9b3b55beee9c6454df675e9538d6d",
-      "skills": ["ghfs"]
-    },
-    {
-      "source": "mattpocock/skills",
-      "ref": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
-      "skills": ["grill-me", "grilling", "retro"]
-    },
-    {
-      "source": "vercel-labs/agent-browser",
-      "ref": "d44f6989bf5e9a9a1c6dd6d97175f8c33b138eca",
-      "skills": ["agent-browser"]
-    },
-    {
-      "source": "vercel-labs/agent-desktop",
-      "ref": "b43ac4f6e892ef608f8851428613c4009f0e84c7",
-      "skills": ["agent-desktop"]
-    },
-    {
-      "source": "vercel-labs/agent-skills",
-      "ref": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
-      "skills": ["web-design-guidelines", "writing-guidelines"]
-    },
-    {
-      "source": "vercel-labs/deepsec",
-      "ref": "36ea9fcb62a0a025a5ee020487ba72c92fb205e6",
-      "skills": ["deepsec"]
-    },
-    {
-      "source": "vercel-labs/opensrc",
-      "ref": "b51de60867e806da1839b33dd29c29424f12521b",
-      "skills": ["opensrc"]
-    },
-    {
-      "source": "vercel-labs/portless",
-      "ref": "1912a0f174325cd8bc1f90b71fa311e13b106563",
-      "skills": ["portless"]
-    },
-    {
-      "source": "vercel-labs/skills",
-      "ref": "d3701c11b1101251af14c9d148f026e1a47ebe17",
-      "skills": ["find-skills"]
-    },
-    {
-      "source": "vercel-labs/webreel",
-      "ref": "1504682685514107e48a1696490666eb9ed7da14",
-      "skills": ["webreel"]
-    }
-  ]
+  "name": "skills-site",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#lib/*": "./lib/*"
+  },
+  "scripts": {
+    "build": "bun lib/index.ts build",
+    "skills:resolve": "bun lib/index.ts resolve",
+    "skills:update": "bun lib/index.ts update",
+    "skills:verify": "bun lib/index.ts verify",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "engines": {
+    "node": ">=24.4.0"
+  },
+  "dependencies": {
+    "@11ty/gray-matter": "^3.0.0",
+    "ajv": "^8.20.0",
+    "modern-tar": "^0.8.6"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "@types/node": "^24",
+    "typescript": "^5.8"
+  }
 }

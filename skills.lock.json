@@ -1,0 +1,42 @@
+{
+  "$schema": "./schemas/skills.lock.schema.json",
+  "anthropics/skills#skill-creator": {
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+  },
+  "https://hugorcd.com#pr-writing": {
+    "digest": "sha256:761e1f295a893260f2b37f963b1640e8d17de5288b300a22c09ceff4e573b317"
+  },
+  "mattpocock/skills#grill-me": {
+    "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+  },
+  "mattpocock/skills#grilling": {
+    "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+  },
+  "mattpocock/skills#retro": {
+    "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+  },
+  "mattpocock/skills#writing-for-agents": {
+    "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+  },
+  "vercel-labs/agent-browser#agent-browser": {
+    "commit": "4b0e9f01fa8d214d39bbfe5391257640634fb9a0"
+  },
+  "vercel-labs/agent-desktop#agent-desktop": {
+    "commit": "b43ac4f6e892ef608f8851428613c4009f0e84c7"
+  },
+  "vercel-labs/agent-skills#web-design-guidelines": {
+    "commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
+  },
+  "vercel-labs/agent-skills#writing-guidelines": {
+    "commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
+  },
+  "vercel-labs/opensrc#opensrc": {
+    "commit": "b51de60867e806da1839b33dd29c29424f12521b"
+  },
+  "vercel-labs/skills#find-skills": {
+    "commit": "d3701c11b1101251af14c9d148f026e1a47ebe17"
+  },
+  "vercel-labs/webreel#webreel": {
+    "commit": "1504682685514107e48a1696490666eb9ed7da14"
+  }
+}

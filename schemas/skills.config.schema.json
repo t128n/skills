@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "skills.config.json",
+  "description": "Desired external skill dependencies. Resolved versions live in skills.lock.json.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "external": {
+      "type": "array",
+      "items": {
+        "oneOf": [{ "$ref": "#/$defs/githubSource" }, { "$ref": "#/$defs/siteSource" }]
+      }
+    }
+  },
+  "required": ["external"],
+  "additionalProperties": false,
+  "$defs": {
+    "skillName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "githubSource": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+        "skill": { "$ref": "#/$defs/skillName" },
+        "ref": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "as": { "$ref": "#/$defs/skillName" }
+      },
+      "required": ["source", "skill"],
+      "additionalProperties": false
+    },
+    "siteSource": {
+      "type": "object",
+      "properties": {
+        "site": { "type": "string", "pattern": "^https://[^\\s/?#@]+(/[^\\s?#]*)?$" },
+        "skill": { "$ref": "#/$defs/skillName" },
+        "as": { "$ref": "#/$defs/skillName" }
+      },
+      "required": ["site", "skill"],
+      "additionalProperties": false
+    }
+  }
+}

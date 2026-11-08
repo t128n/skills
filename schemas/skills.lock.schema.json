@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "skills.lock.json",
+  "description": "Approved immutable resolutions, keyed by dependency identity (<owner/repo|site>#<skill>).",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" }
+  },
+  "additionalProperties": {
+    "oneOf": [{ "$ref": "#/$defs/githubResolution" }, { "$ref": "#/$defs/siteResolution" }]
+  },
+  "$defs": {
+    "githubResolution": {
+      "type": "object",
+      "properties": {
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" }
+      },
+      "required": ["commit"],
+      "additionalProperties": false
+    },
+    "siteResolution": {
+      "type": "object",
+      "properties": {
+        "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+      },
+      "required": ["digest"],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,109 @@
+name: Deploy skills
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/**"
+      - "lib/**"
+      - "schemas/**"
+      - "vendor/**"
+      - "tests/**"
+      - "skills.config.json"
+      - "skills.lock.json"
+      - "package.json"
+      - "bun.lock"
+      - "tsconfig.json"
+      - "mise.toml"
+      - ".github/workflows/pages.yml"
+  pull_request:
+    paths:
+      - "skills/**"
+      - "lib/**"
+      - "schemas/**"
+      - "vendor/**"
+      - "tests/**"
+      - "skills.config.json"
+      - "skills.lock.json"
+      - "package.json"
+      - "bun.lock"
+      - "tsconfig.json"
+      - "mise.toml"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+# Pull requests only build and verify, and a newer push cancels their older run.
+# Deployments are never cancelled midway; the last good deployment stays live if a run fails.
+concurrency:
+  group: github-pages-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: "1.4.4"
+
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - run: bun test
+      - run: bun run build
+      - run: bun run skills:verify
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+          include-hidden-files: true
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-slim
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+  verify-deployed:
+    needs: deploy
+    runs-on: ubuntu-slim
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: "1.4.4"
+
+      - run: bun install --frozen-lockfile
+      - name: Verify the deployed site (GET, HEAD, redirects, content types, digests)
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          # The CDN can lag a few seconds behind the deployment.
+          for attempt in 1 2 3 4 5; do
+            if bun run skills:verify --base-url "$PAGE_URL"; then exit 0; fi
+            echo "attempt $attempt failed, retrying in 15 s"
+            sleep 15
+          done
+          exit 1

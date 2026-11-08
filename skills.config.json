@@ -1,0 +1,57 @@
+{
+  "$schema": "./schemas/skills.config.schema.json",
+  "external": [
+    {
+      "source": "vercel-labs/skills",
+      "skill": "find-skills"
+    },
+    {
+      "source": "vercel-labs/agent-browser",
+      "skill": "agent-browser"
+    },
+    {
+      "source": "vercel-labs/agent-desktop",
+      "skill": "agent-desktop"
+    },
+    {
+      "source": "vercel-labs/webreel",
+      "skill": "webreel"
+    },
+    {
+      "source": "vercel-labs/opensrc",
+      "skill": "opensrc"
+    },
+    {
+      "source": "vercel-labs/agent-skills",
+      "skill": "web-design-guidelines"
+    },
+    {
+      "source": "vercel-labs/agent-skills",
+      "skill": "writing-guidelines"
+    },
+    {
+      "source": "mattpocock/skills",
+      "skill": "grill-me"
+    },
+    {
+      "source": "mattpocock/skills",
+      "skill": "grilling"
+    },
+    {
+      "source": "mattpocock/skills",
+      "skill": "retro"
+    },
+    {
+      "source": "mattpocock/skills",
+      "skill": "writing-for-agents"
+    },
+    {
+      "site": "https://hugorcd.com",
+      "skill": "pr-writing"
+    },
+    {
+      "source": "anthropics/skills",
+      "skill": "skill-creator"
+    }
+  ]
+}

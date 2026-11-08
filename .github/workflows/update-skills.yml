@@ -1,0 +1,54 @@
+name: Update upstream skills
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+# This workflow only opens a pull request. Nothing is published until a person merges it,
+# and the merge triggers the Deploy skills workflow.
+concurrency:
+  group: update-skills
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  update-skills:
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: "1.4.4"
+
+      - run: bun install --frozen-lockfile
+
+      - name: Resolve upstream updates (lockfile, vendor store, summary)
+        run: bun run skills:update --summary-file "$RUNNER_TEMP/update-summary.md"
+
+      # Pull requests created with GITHUB_TOKEN do not start other workflows,
+      # so the same checks as in Deploy skills run here before the PR is opened.
+      - run: bun run typecheck
+      - run: bun test
+      - run: bun run build
+      - run: bun run skills:verify
+
+      - name: Open or update the pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          commit-message: "chore(skills): update upstream skills"
+          title: "chore(skills): update upstream skills"
+          body-path: ${{ runner.temp }}/update-summary.md
+          branch: chore/update-skills
+          delete-branch: true
+          add-paths: |
+            skills.lock.json
+            vendor/sha256/**
