@@ -18,9 +18,6 @@
   "mattpocock/skills#writing-for-agents": {
     "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
   },
-  "vercel-labs/agent-browser#agent-browser": {
-    "commit": "4b0e9f01fa8d214d39bbfe5391257640634fb9a0"
-  },
   "vercel-labs/agent-desktop#agent-desktop": {
     "commit": "b43ac4f6e892ef608f8851428613c4009f0e84c7"
   },

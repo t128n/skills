@@ -6,10 +6,6 @@
       "skill": "find-skills"
     },
     {
-      "source": "vercel-labs/agent-browser",
-      "skill": "agent-browser"
-    },
-    {
       "source": "vercel-labs/agent-desktop",
       "skill": "agent-desktop"
     },
