@@ -7,19 +7,19 @@
     "digest": "sha256:761e1f295a893260f2b37f963b1640e8d17de5288b300a22c09ceff4e573b317"
   },
   "mattpocock/skills#grill-me": {
-    "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
   "mattpocock/skills#grilling": {
-    "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
   "mattpocock/skills#retro": {
-    "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
   "mattpocock/skills#writing-for-agents": {
-    "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
   "vercel-labs/agent-desktop#agent-desktop": {
-    "commit": "b43ac4f6e892ef608f8851428613c4009f0e84c7"
+    "commit": "54855b6225aec00da4ac65e2d0362fd41cd9fcb3"
   },
   "vercel-labs/agent-skills#web-design-guidelines": {
     "commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
@@ -31,7 +31,7 @@
     "commit": "b51de60867e806da1839b33dd29c29424f12521b"
   },
   "vercel-labs/skills#find-skills": {
-    "commit": "d3701c11b1101251af14c9d148f026e1a47ebe17"
+    "commit": "e781cb4d07433dfe1d19e924ed45cc61738c55ec"
   },
   "vercel-labs/webreel#webreel": {
     "commit": "1504682685514107e48a1696490666eb9ed7da14"
