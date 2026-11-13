@@ -7,6 +7,7 @@ import { buildLocalSkills } from "#lib/sources/local.ts";
 import { REPO_ROOT } from "./helpers.ts";
 
 const skills = {
+  communicate: [],
   "meeting-notes": [
     "references/meeting-minutes.md",
     "references/decisions.md",
@@ -43,10 +44,11 @@ describe("communication skills", () => {
     });
   }
 
-  test("local discovery includes both skills as independent archives", async () => {
+  test("local discovery publishes every communication skill", async () => {
     const published = await buildLocalSkills(join(REPO_ROOT, "skills"));
     for (const name of Object.keys(skills)) {
-      expect(published.find((s) => s.name === name)?.type).toBe("archive");
+      const expected = name === "communicate" ? "skill-md" : "archive";
+      expect(published.find((s) => s.name === name)?.type).toBe(expected);
     }
   });
 });
