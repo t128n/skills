@@ -26,6 +26,10 @@
       "skill": "writing-guidelines"
     },
     {
+      "site": "https://www.skills.sh/obra/superpowers/brainstorming",
+      "skill": "brainstorming"
+    },
+    {
       "source": "mattpocock/skills",
       "skill": "grill-me"
     },
