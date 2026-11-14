@@ -24,6 +24,9 @@
   "obra/superpowers#brainstorming": {
     "commit": "22f0b463e7a5e579904dd6211a520321035526f7"
   },
+  "obsidianmd/obsidian-skills#defuddle": {
+    "commit": "398127736bd4ba42d767b1419fee1a927508370b"
+  },
   "vercel-labs/agent-desktop#agent-desktop": {
     "commit": "2f6507051f6790e2645ca1afd5bac5ad187354d7"
   },

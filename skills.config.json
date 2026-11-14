@@ -56,6 +56,10 @@
     {
       "source": "anthropics/skills",
       "skill": "skill-creator"
+    },
+    {
+      "source": "obsidianmd/obsidian-skills",
+      "skill": "defuddle"
     }
   ]
 }
