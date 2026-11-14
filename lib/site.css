@@ -1,0 +1,78 @@
+/*
+ * Site-specific additions layered on top of open.css.
+ * open.css lives in @layer open, so un-layered rules here take precedence.
+ */
+
+.skip-link {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 10;
+  padding: 0 var(--open-cell-w);
+  background: var(--open-bg-panel);
+  color: var(--open-text-strong);
+}
+
+.skip-link:not(:focus-visible) {
+  clip-path: inset(50%);
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header-wordmark {
+  display: inline-flex;
+  align-items: center;
+  color: var(--open-text-strong);
+}
+
+.header-wordmark svg {
+  inline-size: auto;
+  block-size: calc(var(--open-cell-h) * 0.65);
+}
+
+/* Long URLs in skill descriptions must not widen the table past the frame. */
+:where(table) {
+  table-layout: fixed;
+}
+
+:where(th, td) {
+  overflow-wrap: anywhere;
+}
+
+:where(th, td):first-child {
+  inline-size: 26ch;
+}
+
+/* Stack the two table columns on narrow screens instead of squeezing them. */
+@media (max-width: 48rem) {
+  :where(table) {
+    table-layout: auto;
+  }
+
+  :where(thead) {
+    display: none;
+  }
+
+  :where(tbody, tr, th, td) {
+    display: block;
+    inline-size: auto;
+  }
+
+  :where(tbody tr) {
+    border: var(--open-border-width) var(--open-border-style) var(--open-border-color);
+  }
+
+  :where(tbody tr + tr) {
+    border-block-start: 0;
+  }
+
+  :where(tbody th, tbody td) {
+    border: 0;
+  }
+
+  :where(tbody th) {
+    padding-block-end: 0;
+  }
+}

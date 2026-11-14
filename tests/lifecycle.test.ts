@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { readTarGz } from "#lib/archive.ts";
 import { build } from "#lib/build.ts";
@@ -419,6 +419,15 @@ describe("verify", () => {
 
   test("passes for a fresh build", async () => {
     expect(await verifyDist((await built()).dist)).toEqual([]);
+  });
+
+  test("detects missing stylesheets", async () => {
+    const paths = await built();
+    rmSync(join(paths.siteDir, "open.css"));
+    rmSync(join(paths.siteDir, "site.css"));
+    const problems = (await verifyDist(paths.dist)).join("\n");
+    expect(problems).toMatch(/open\.css is missing/);
+    expect(problems).toMatch(/site\.css is missing/);
   });
 
   test("detects a corrupted byte", async () => {

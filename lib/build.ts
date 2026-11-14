@@ -56,15 +56,23 @@ function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 }
 
+function readAsset(name: string): string {
+  return readFileSync(new URL(name, import.meta.url), "utf8");
+}
+
 function renderLandingPage(registry: SkillRegistry): string {
-  const template = readFileSync(new URL("./index.html", import.meta.url), "utf8");
+  const template = readAsset("./index.html");
   const items = registry
     .all()
-    .map((skill) => `<li><code>${escapeHtml(skill.name)}</code> &ndash; ${escapeHtml(skill.description)}</li>`)
-    .join("\n                ");
+    .map(
+      (skill) =>
+        `<tr><th scope="row"><code>${escapeHtml(skill.name)}</code></th><td><small>${escapeHtml(skill.description)}</small></td></tr>`,
+    )
+    .join("\n                        ");
   return template
     .replaceAll("{{PUBLIC_URL}}", PUBLIC_URL)
     .replaceAll("{{INDEX_URL}}", `${WELL_KNOWN}/index.json`)
+    .replaceAll("{{YEAR}}", String(new Date().getFullYear()))
     .replace("{{SKILLS}}", items);
 }
 
@@ -74,6 +82,8 @@ export function writeSite(root: string, registry: SkillRegistry): void {
   mkdirSync(siteDir, { recursive: true });
   writeFileSync(join(root, ".nojekyll"), "");
   writeFileSync(join(siteDir, "index.html"), renderLandingPage(registry));
+  writeFileSync(join(siteDir, "open.css"), readAsset("./open.css"));
+  writeFileSync(join(siteDir, "site.css"), readAsset("./site.css"));
   registry.write(join(siteDir, WELL_KNOWN));
 }
 

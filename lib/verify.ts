@@ -73,6 +73,8 @@ export async function verifyDist(dist: string): Promise<string[]> {
 
   if (!existsSync(join(dist, ".nojekyll"))) problems.push(".nojekyll is missing at the site root");
   if (!existsSync(join(siteDir, "index.html"))) problems.push("index.html is missing");
+  if (!existsSync(join(siteDir, "open.css"))) problems.push("open.css is missing");
+  if (!existsSync(join(siteDir, "site.css"))) problems.push("site.css is missing");
 
   const indexPath = join(outDir, "index.json");
   if (!existsSync(indexPath)) return [...problems, `${indexPath} is missing`];
