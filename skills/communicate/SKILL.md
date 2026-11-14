@@ -1,11 +1,14 @@
 ---
 name: communicate
 description: >
-  Use whenever writing, replying, commenting, reviewing,
-  or sending a message on behalf of the user. Applies to
-  GitHub, Microsoft Teams, Outlook, and other communication
-  channels. Follow the user's writing style and always
-  disclose OpenCode authorship.
+  Use only when the user explicitly asks to draft, write, reply to,
+  comment, or send a message on their behalf (for example in GitHub,
+  Microsoft Teams, Outlook, or other external communication channels).
+  Do not use for normal assistant replies, technical documentation
+  (write-doc, schreibrichtlinien), briefings or meeting notes, or
+  PR review reports unless asked to write a message on the user's behalf.
+  Follow the user's writing style and disclose OpenCode authorship
+  when OpenCode produces or sends the message.
 ---
 
 # Communicate

@@ -1,0 +1,48 @@
+{
+  "skill_name": "writing-style-guide",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "bilingual-glossary-from-docs",
+      "prompt": "We have English and German docs in this repo that are starting to drift—some pages say 'Arbeitsbereich' and others say 'Workspace', and people mix 'API token' and 'API key'. Can you create a docs/writing/glossary.md for our write-doc workflow? Include terms for workspace, API key, deployment, access control, and webhook.",
+      "expected_output": "A bilingual EN/DE glossary table in docs/writing/glossary.md format with Concept, English, Deutsch (with articles/plurals), Do not use, and Notes columns, including loanword/compound rules.",
+      "files": [],
+      "assertions": [
+        "Uses the 5-column bilingual table (Concept, English, Deutsch, Do not use, Notes)",
+        "Includes all 5 requested terms: workspace, API key, deployment, access control, and webhook",
+        "Records German grammatical articles (der/die/das) for nouns",
+        "Records rejected variants ('Arbeitsbereich', 'API token') in the 'Do not use' column",
+        "Follows German loanword/compound hyphenation (e.g. 'API-Schlüssel')"
+      ]
+    },
+    {
+      "id": 1,
+      "eval_name": "domain-glossary-onboarding",
+      "prompt": "Our new hires keep confusing 'workspace', 'sandbox', 'skill manifest', and 'lockfile'. Write a conceptual domain glossary in docs/glossary.md with clear definitions, concrete examples, what terms to avoid, and links between related terms.",
+      "expected_output": "A conceptual domain glossary with uniform entries (definition, Context / Example, Avoid, Related links) distinguishing the four concepts.",
+      "files": [],
+      "assertions": [
+        "Covers all 4 requested concepts: workspace, sandbox, skill manifest, and lockfile",
+        "Each entry includes a clear definition, a concrete project example, terms to avoid, and related-term links",
+        "Uses uniform heading/field structure across all entries",
+        "Related links use valid markdown anchor links to other entries in the glossary"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "glossary-audit-and-update",
+      "prompt": "Check our existing glossary.md and guide.md—we recently added a 'cron job' feature and I suspect the German doc uses 'Timer', 'Zeitplan-Task', and 'Cronjob' interchangeably. Audit guide.md and produce an updated glossary.md.",
+      "expected_output": "Audit report with line numbers and offending terms, plus a minimally updated glossary.md preserving existing rows and adding the cron job entry in both languages.",
+      "files": [
+        "skills/glossary-workspace/iteration-1/glossary-audit-and-update/fixtures/glossary.md",
+        "skills/glossary-workspace/iteration-1/glossary-audit-and-update/fixtures/guide.md"
+      ],
+      "assertions": [
+        "Audit report identifies all 'Do not use' violations from guide.md with line numbers (Arbeitsbereich, API token, Projektordner)",
+        "Audit report identifies the conflicting cron job terms ('Timer', 'Zeitplan-Task', 'Cronjob')",
+        "Updated glossary.md preserves the existing workspace and API key rows without rewriting them",
+        "Updated glossary.md adds the cron job entry in both English and German with article/plural and Do not use variants"
+      ]
+    }
+  ]
+}
