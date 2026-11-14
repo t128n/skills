@@ -6,9 +6,6 @@
   "https://hugorcd.com#pr-writing": {
     "digest": "sha256:761e1f295a893260f2b37f963b1640e8d17de5288b300a22c09ceff4e573b317"
   },
-  "https://www.skills.sh/obra/superpowers/brainstorming#brainstorming": {
-    "digest": "sha256:2c9ca71f94886f9ca9f4aef055f7cafb3e1a9bdf3aeebf8f4cb547c69405d207"
-  },
   "mattpocock/skills#grill-me": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
@@ -23,6 +20,9 @@
   },
   "mattpocock/skills#writing-for-agents": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "obra/superpowers#brainstorming": {
+    "commit": "22f0b463e7a5e579904dd6211a520321035526f7"
   },
   "vercel-labs/agent-desktop#agent-desktop": {
     "commit": "54855b6225aec00da4ac65e2d0362fd41cd9fcb3"
