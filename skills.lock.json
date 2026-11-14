@@ -9,6 +9,9 @@
   "mattpocock/skills#grill-me": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
+  "mattpocock/skills#grill-with-docs": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
   "mattpocock/skills#grilling": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
@@ -17,6 +20,9 @@
   },
   "mattpocock/skills#writing-for-agents": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "obra/superpowers#brainstorming": {
+    "commit": "22f0b463e7a5e579904dd6211a520321035526f7"
   },
   "vercel-labs/agent-desktop#agent-desktop": {
     "commit": "54855b6225aec00da4ac65e2d0362fd41cd9fcb3"
