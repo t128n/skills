@@ -1,6 +1,6 @@
 ---
 name: engineering-principles
-description: "Review nontrivial code with state transitions, persistence, concurrency, retries, or external I/O, and choose BDD scenarios, property-based tests, and contract tests. Skip trivial edits and straightforward refactors."
+description: "Review nontrivial code with state transitions, persistence, concurrency, retries, or external I/O. Use when choosing how to test a change: BDD scenarios, property-based tests, or contract tests. Skip trivial edits and straightforward refactors."
 ---
 
 # Engineering principles
