@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/skills.lock.schema.json",
   "anthropics/skills#skill-creator": {
-    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+    "commit": "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064"
   },
   "https://hugorcd.com#pr-writing": {
     "digest": "sha256:761e1f295a893260f2b37f963b1640e8d17de5288b300a22c09ceff4e573b317"
@@ -28,7 +28,7 @@
     "commit": "398127736bd4ba42d767b1419fee1a927508370b"
   },
   "vercel-labs/agent-desktop#agent-desktop": {
-    "commit": "46d2adf885002633b77d5a9956c9464b24f61431"
+    "commit": "8ffecc1d3d088727f8d84baf4dde0224aab2e8ad"
   },
   "vercel-labs/agent-skills#web-design-guidelines": {
     "commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
