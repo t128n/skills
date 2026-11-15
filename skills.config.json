@@ -26,40 +26,23 @@
       "skill": "writing-guidelines"
     },
     {
-      "source": "obra/superpowers",
-      "skill": "brainstorming"
-    },
-    {
-      "source": "mattpocock/skills",
-      "skill": "grill-me"
-    },
-    {
-      "source": "mattpocock/skills",
-      "skill": "grill-with-docs"
-    },
-    {
-      "source": "mattpocock/skills",
-      "skill": "grilling"
-    },
-    {
-      "source": "mattpocock/skills",
-      "skill": "retro"
-    },
-    {
-      "source": "mattpocock/skills",
-      "skill": "writing-for-agents"
-    },
-    {
-      "site": "https://hugorcd.com",
-      "skill": "pr-writing"
-    },
-    {
       "source": "anthropics/skills",
       "skill": "skill-creator"
     },
     {
       "source": "obsidianmd/obsidian-skills",
       "skill": "defuddle"
+    },
+    {
+      "source": "mattpocock/skills",
+      "exclude": [
+        "git-guardrails-claude-code",
+        "claude-handoff",
+        "setup-pre-commit",
+        "migrate-to-shoehorn",
+        "scaffold-exercises",
+        "setup-ts-deep-modules"
+      ]
     }
   ]
 }
