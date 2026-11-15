@@ -1,6 +1,6 @@
 ---
 name: "write-doc"
-description: "Write or revise technical documentation in German or English so that tone, terminology and structure follow the project's writing style guide: guidelines, how-tos, tutorials, reference pages, explanations and READMEs. Use when the user asks to write, draft or rewrite such a document. Not for specs, plans or ADRs, and not during a grilling or brainstorming session."
+description: "Write or revise technical documentation (guidelines, how-tos, tutorials, reference, explanations, READMEs) in German or English, following the project's style guide. Not for specs, plans, or ADRs."
 ---
 
 # Write doc

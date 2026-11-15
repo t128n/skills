@@ -1,6 +1,6 @@
 ---
 name: briefing
-description: Synthesize raw notes, documents, discussions, or investigations into concise, audience-specific briefings. Use for meeting pre-reads, executive summaries, decision memos, status updates, and handoff notes that help an audience understand a situation, decide, prepare, or take over work.
+description: "Synthesize notes or documents into audience-specific briefings: pre-reads, executive summaries, decision memos, status updates, handoffs."
 ---
 
 # Briefing

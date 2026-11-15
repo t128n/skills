@@ -1,6 +1,6 @@
 ---
 name: "schreibrichtlinien"
-description: "German writing guidelines for technical documentation, adapted from the Vercel Writing Guidelines. Use when reviewing or auditing German docs or prose (Doku prüfen, Schreibstil prüfen, Text gegenlesen) and as the German style baseline alongside write-doc when writing or revising German documentation. Never apply to English documents."
+description: "German writing guidelines for technical docs, adapted from the Vercel Writing Guidelines. Use to review German docs or as the German style baseline with write-doc. Never for English."
 ---
 
 # Schreibrichtlinien (Deutsch)

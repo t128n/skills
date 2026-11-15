@@ -1,6 +1,6 @@
 ---
 name: meeting-notes
-description: Turn rough notes, transcripts, chats, workshops, or existing minutes into accurate, actionable meeting records. Use when asked to summarize or organize meeting discussions, decisions, follow-ups, and unresolved questions; preserve uncertainty and do not turn proposals into commitments.
+description: "Turn rough notes, transcripts, or minutes into accurate meeting records with decisions, follow-ups, and open questions. Do not turn proposals into commitments."
 ---
 
 # Meeting notes

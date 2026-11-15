@@ -1,6 +1,6 @@
 ---
 name: github
-description: Retrieve GitHub context, investigate issues, regressions, and failed CI runs, and process pull request reviews and unresolved threads. Use when a task references GitHub issues, PRs, reviews, checks, workflow failures, or asks whether a change was discussed, why something broke, or what PR feedback remains.
+description: "Gather GitHub context, investigate issues, regressions and failed CI, and process PR reviews. Use when a task references issues, PRs, checks, or review threads."
 compatibility: Requires git and an authenticated GitHub CLI (gh). Review thread mutations and local reproduction may require jq and project-specific tooling; ghfs is optional for local issue/PR discovery.
 ---
 

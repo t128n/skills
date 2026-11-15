@@ -1,6 +1,6 @@
 ---
 name: engineering-principles
-description: Apply engineering judgment when designing, implementing, or reviewing nontrivial code involving state transitions, persistence, concurrency, retries, external I/O, or side effects. Identify credible failure modes and protect important invariants without overengineering. Skip trivial edits, styling, copy changes, and straightforward refactors.
+description: "Review heuristics for nontrivial code with state transitions, persistence, concurrency, retries, or external I/O. Skip trivial edits and straightforward refactors."
 ---
 
 # Engineering principles

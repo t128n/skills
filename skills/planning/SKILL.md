@@ -1,6 +1,6 @@
 ---
 name: planning
-description: Plan software engineering work, technical products, and architectural changes into test-first feature specs, implementation plans, RFCs, ADRs, or task breakdowns with BDD scenarios, property-based tests, and consumer-driven contracts. Use when asked for a plan, spec, technical design, RFC, ADR, or work decomposition. Scale the process to the task; do not turn routine implementation requests into planning projects, and do not interrupt active grilling, interview, or brainstorming sessions.
+description: "Plan engineering work into test-first specs, implementation plans, RFCs, ADRs, or task breakdowns. Use when asked for a plan, spec, design, RFC, ADR, or decomposition. Scale to the task."
 ---
 
 # Engineering planning

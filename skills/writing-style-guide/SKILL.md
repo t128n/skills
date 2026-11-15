@@ -1,6 +1,6 @@
 ---
 name: "writing-style-guide"
-description: "Create, update, or audit the project's writing style guide (`docs/writing/style-guide.md`) and terminology glossary (`docs/writing/glossary.md` or standalone domain glossaries). Supports bilingual German/English terminology tables by default, single-language or other language pairs, and conceptual domain glossaries with definitions, examples, and forbidden variants. Use whenever the user asks to set up, derive, update, extract, or audit a writing style guide, tone of voice, glossary, vocabulary, or inconsistent terminology across docs. Not for code style, linters, source formatting rules, or full document drafting (use `write-doc`)."
+description: "Create, update, or audit the project's prose style guide and terminology glossary in docs/writing/. Not for code style or drafting documents (use write-doc)."
 ---
 
 # Writing style guide
