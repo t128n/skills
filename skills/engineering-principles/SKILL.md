@@ -1,6 +1,6 @@
 ---
 name: engineering-principles
-description: "Review heuristics for nontrivial code with state transitions, persistence, concurrency, retries, or external I/O. Skip trivial edits and straightforward refactors."
+description: "Review nontrivial code with state transitions, persistence, concurrency, retries, or external I/O, and choose BDD scenarios, property-based tests, and contract tests. Skip trivial edits and straightforward refactors."
 ---
 
 # Engineering principles
@@ -40,3 +40,15 @@ If the justification is weak, omit the complexity. If the risk is material but o
 ## Output
 
 Report **only findings that influence the decision or implementation**. For each significant finding, name the affected invariant or failure mode, cite the relevant code or behavior, and suggest the smallest practical fix. If no material issue exists, say so briefly. Do not produce a seven-section report or enumerate principles that do not apply.
+
+## Choosing verification techniques
+
+Before building, decide how the change will be verified. Pick by what the change touches; many changes need only ordinary example tests.
+
+| The change touches | Technique |
+| --- | --- |
+| Behaviour a user or caller can observe | [BDD scenarios](references/bdd.md) |
+| Pure logic, parsers, serializers, data transforms, state machines | [Property-based tests](references/property-testing.md) |
+| A request, response, event, or schema crossing a service or team boundary | [Consumer-driven contract tests](references/contract-testing.md) |
+
+Read the linked reference for how to write each one. If none fits, use ordinary example tests, and say why when you skip a technique. Use the tools the repository already has. The principles above tell you which failure modes need a test. This section tells you what kind of test fits.

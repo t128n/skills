@@ -1,5 +1,5 @@
 ---
-name: briefing
+name: write-briefing
 description: "Synthesize notes or documents into audience-specific briefings: pre-reads, executive summaries, decision memos, status updates, handoffs."
 ---
 

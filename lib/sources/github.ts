@@ -2,7 +2,7 @@ import { join } from "node:path";
 import { readSkillFiles } from "#lib/archive.ts";
 import { publishedName, type GithubDep } from "#lib/config.ts";
 import type { Context } from "#lib/context.ts";
-import { findSkillDir } from "#lib/git.ts";
+import { findSkillDir, listSkillNames } from "#lib/git.ts";
 import { type Published, packSkill } from "#lib/registry.ts";
 
 export function githubSourceUrl(repo: string, commit: string, relativeDir: string): string {
@@ -13,6 +13,11 @@ export function githubSourceUrl(repo: string, commit: string, relativeDir: strin
 /** Update only: the commit a branch, tag or the default branch points to now. */
 export function resolveGithubCommit(dep: GithubDep, ctx: Context): string {
   return ctx.git.resolveCommit(dep.source, dep.ref);
+}
+
+/** Every skill name in the repository at one exact commit. */
+export function listGithubSkills(source: string, commit: string, ctx: Context): string[] {
+  return listSkillNames(ctx.git.checkout(source, commit), source);
 }
 
 /** Package a skill from one exact commit. */

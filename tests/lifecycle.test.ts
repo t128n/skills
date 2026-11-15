@@ -114,6 +114,37 @@ describe("GitHub sources", () => {
     expect(entryOf(paths, "alpha").digest).not.toBe(digest1);
   });
 
+  test("a repository entry resolves every skill in the repository and follows later changes", async () => {
+    const host = new GitHost();
+    const sha1 = host.commit("o/r", {
+      "skills/one/SKILL.md": skillMd("one"),
+      "skills/group/two/SKILL.md": skillMd("two"),
+      "skills/skip/SKILL.md": skillMd("skip"),
+      "README.md": "no skill here\n",
+    });
+    const { paths } = makeProject({ config: githubConfig({ source: "o/r", exclude: ["skip"] }) });
+    const ctx = gitContext(host);
+
+    await updateLock(paths, ctx, "resolve");
+    expect(Object.keys(readLock(paths)).filter((k) => k !== "$schema")).toEqual(["o/r#one", "o/r#two"]);
+    await build(paths, ctx);
+    expect(entryOf(paths, "one")).toBeDefined();
+    expect(entryOf(paths, "two")).toBeDefined();
+    expect(entryOf(paths, "skip")).toBeUndefined();
+
+    const sha2 = host.commit("o/r", { "skills/three/SKILL.md": skillMd("three") });
+    await updateLock(paths, ctx, "resolve");
+    expect(Object.keys(readLock(paths)).filter((k) => k !== "$schema")).toEqual(["o/r#one", "o/r#two"]);
+
+    await updateLock(paths, ctx, "update");
+    expect(Object.keys(readLock(paths)).filter((k) => k !== "$schema")).toEqual(["o/r#one", "o/r#three", "o/r#two"]);
+    expect(readLock(paths)["o/r#three"].commit).toBe(sha2);
+
+    host.remove("o/r", "skills/group");
+    await updateLock(paths, ctx, "update");
+    expect(Object.keys(readLock(paths)).filter((k) => k !== "$schema").sort()).toEqual(["o/r#one", "o/r#three"]);
+  });
+
   test("a failed resolve leaves the lockfile and vendor store untouched", async () => {
     const host = new GitHost();
     host.commit("o/r", { "alpha/SKILL.md": skillMd("alpha") });

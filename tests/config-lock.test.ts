@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { assertLockMatchesConfig, checkLock, depKey, normalizeSite, parseConfig, parseIndex, parseLock } from "#lib/config.ts";
+import { assertLockMatchesConfig, checkLock, depKey, expandConfig, normalizeSite, parseConfig, parseIndex, parseLock } from "#lib/config.ts";
 import { DISCOVERY_SCHEMA } from "#lib/constants.ts";
 import { diffLocks, serializeLock } from "#lib/lock.ts";
 
@@ -75,6 +75,24 @@ describe("lock schema", () => {
     expect(checkLock(config, lock)).toEqual({ missing: ["o/r#c"], stale: ["gone/repo#x"], wrongType: ["https://e.com#b"] });
     expect(() => assertLockMatchesConfig(config, lock)).toThrow(/skills:resolve/);
     expect(depKey(config.external[1])).toBe("https://e.com#b");
+  });
+
+  test("a repository entry takes every locked skill of that repository, minus exclusions", () => {
+    const config = parseConfig({ external: [{ source: "o/r", exclude: ["skip"] }, { source: "p/q", skill: "mine" }] });
+    expect(depKey(config.external[0])).toBe("o/r#*");
+    const lock = parseLock({ "o/r#a": { commit: SHA }, "o/r#b": { commit: SHA }, "p/q#mine": { commit: SHA } });
+    expect(checkLock(config, lock)).toEqual({ missing: [], stale: [], wrongType: [] });
+    expect(expandConfig(config, lock).external.map(depKey)).toEqual(["o/r#a", "o/r#b", "p/q#mine"]);
+    expect(checkLock(config, parseLock({ "p/q#mine": { commit: SHA } })).missing).toEqual(["o/r#*"]);
+    expect(checkLock(config, parseLock({ ...lock, "o/r#skip": { commit: SHA } })).stale).toEqual(["o/r#skip"]);
+  });
+
+  test("a repository entry cannot name a skill, path or rename; names must stay unique after expanding", () => {
+    expect(() => parseConfig({ external: [{ source: "o/r", as: "x" }] })).toThrow();
+    expect(() => parseConfig({ external: [{ source: "o/r", path: "x" }] })).toThrow();
+    expect(() => parseConfig({ external: [{ source: "o/r" }, { source: "o/r" }] })).toThrow(/duplicate dependency/);
+    const config = parseConfig({ external: [{ source: "o/r" }, { source: "p/q" }] });
+    expect(() => expandConfig(config, parseLock({ "o/r#a": { commit: SHA }, "p/q#a": { commit: SHA } }))).toThrow(/both publish the name/);
   });
 
   test("diffLocks lists added, removed and updated entries", () => {

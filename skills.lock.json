@@ -3,8 +3,23 @@
   "anthropics/skills#skill-creator": {
     "commit": "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064"
   },
-  "https://hugorcd.com#pr-writing": {
-    "digest": "sha256:761e1f295a893260f2b37f963b1640e8d17de5288b300a22c09ceff4e573b317"
+  "mattpocock/skills#ask-matt": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#chief-of-staff": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#code-review": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#codebase-design": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#diagnosing-bugs": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#domain-modeling": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
   "mattpocock/skills#grill-me": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
@@ -15,14 +30,74 @@
   "mattpocock/skills#grilling": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
+  "mattpocock/skills#handoff": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#implement": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#implement-spec": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#improve-codebase-architecture": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#loop-me": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#pr": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#prototype": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#research": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
   "mattpocock/skills#retro": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#setup-matt-pocock-skills": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#tdd": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#teach": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#to-questionnaire": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#to-spec": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#to-tickets": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#triage": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#wait-what": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#wayfinder": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#wizard": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#writing-beats": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
   "mattpocock/skills#writing-for-agents": {
     "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
-  "obra/superpowers#brainstorming": {
-    "commit": "22f0b463e7a5e579904dd6211a520321035526f7"
+  "mattpocock/skills#writing-fragments": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+  },
+  "mattpocock/skills#writing-shape": {
+    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
   },
   "obsidianmd/obsidian-skills#defuddle": {
     "commit": "398127736bd4ba42d767b1419fee1a927508370b"

@@ -1,12 +1,16 @@
 import { appendFileSync, existsSync, readFileSync } from "node:fs";
 import {
   assertLockMatchesConfig,
+  coveredBy,
   depKey,
+  expandConfig,
   isGithubDep,
+  isRepoDep,
   loadConfig,
   loadLock,
   type Config,
-  type Dep,
+  type ConcreteDep,
+  type ExpandedConfig,
   type Lock,
 } from "#lib/config.ts";
 import type { Paths } from "#lib/constants.ts";
@@ -15,7 +19,7 @@ import { hasVendored, pruneVendored, readVendored, writeFileAtomic, writeVendore
 import { digestHex, diffLocks, serializeLock, type LockChange } from "#lib/lock.ts";
 import { type Published } from "#lib/registry.ts";
 import { assemble, stageAndVerify } from "#lib/build.ts";
-import { buildGithubSkill, resolveGithubCommit } from "#lib/sources/github.ts";
+import { buildGithubSkill, listGithubSkills, resolveGithubCommit } from "#lib/sources/github.ts";
 import { fetchSiteArtifact, publishSiteSkill } from "#lib/sources/site.ts";
 import { fail, sha256 } from "#lib/utils.ts";
 
@@ -33,6 +37,20 @@ async function resolveAll(
   const next: Lock = {};
   for (const dep of config.external) {
     const key = depKey(dep);
+    if (isRepoDep(dep)) {
+      const explicit = new Set(config.external.filter(isGithubDep).filter((d) => d.source === dep.source).map(depKey));
+      const kept = Object.entries(before).find(([k, v]) => coveredBy(dep, k) && !explicit.has(k) && "commit" in v);
+      const commit = mode === "resolve" && kept ? (kept[1] as { commit: string }).commit : ctx.git.resolveCommit(dep.source, dep.ref);
+      let count = 0;
+      for (const skill of listGithubSkills(dep.source, commit, ctx)) {
+        const skillKey = `${dep.source}#${skill}`;
+        if (!coveredBy(dep, skillKey) || explicit.has(skillKey)) continue;
+        next[skillKey] = { commit };
+        count++;
+      }
+      console.log(`  resolved ${key} (${count} skills @ ${commit.slice(0, 7)})`);
+      continue;
+    }
     const existing = before[key];
     // `resolve` keeps approved resolutions; `update` replaces all of them.
     const keep = mode === "resolve" && existing !== undefined && "commit" in existing === isGithubDep(dep);
@@ -73,11 +91,12 @@ export async function updateLock(paths: Paths, ctx: Context, mode: Mode): Promis
   assertLockMatchesConfig(config, next);
 
   const readVendor = (digest: string): Buffer => pending.get(digest) ?? readVendored(paths.vendor, digest);
-  const registry = await assemble(paths, config, next, ctx, readVendor);
+  const expanded = expandConfig(config, next);
+  const registry = await assemble(paths, expanded, next, ctx, readVendor);
   await stageAndVerify(ctx.tmp.create("skills-candidate-"), registry);
 
   // Needs the old vendored bytes, so it must run before pruning.
-  const summary = await summarize(paths, config, before, next, registry.all(), ctx);
+  const summary = await summarize(paths, expanded, before, next, registry.all(), ctx);
 
   const referenced = new Set<string>();
   for (const entry of Object.values(next)) {
@@ -113,7 +132,7 @@ function describeFileChanges(before: Published | undefined, after: Published | u
   return lines;
 }
 
-async function previousSkill(dep: Dep, before: Lock, paths: Paths, ctx: Context): Promise<Published | undefined> {
+async function previousSkill(dep: ConcreteDep, before: Lock, paths: Paths, ctx: Context): Promise<Published | undefined> {
   const entry = before[depKey(dep)];
   try {
     if (isGithubDep(dep) && entry && "commit" in entry) return await buildGithubSkill(dep, entry.commit, ctx);
@@ -124,7 +143,7 @@ async function previousSkill(dep: Dep, before: Lock, paths: Paths, ctx: Context)
   return undefined;
 }
 
-function link(dep: Dep | undefined, change: LockChange): string {
+function link(dep: ConcreteDep | undefined, change: LockChange): string {
   if (dep && isGithubDep(dep) && change.from && change.to) {
     return `[compare](https://github.com/${dep.source}/compare/${change.from}...${change.to})`;
   }
@@ -139,7 +158,7 @@ function shorten(value: string | undefined): string {
 /** Markdown for the pull request: what changed, where to look, and what to check first. */
 async function summarize(
   paths: Paths,
-  config: Config,
+  config: ExpandedConfig,
   before: Lock,
   after: Lock,
   skills: Published[],

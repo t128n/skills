@@ -1,6 +1,6 @@
 ---
-name: "schreibrichtlinien"
-description: "German writing guidelines for technical docs, adapted from the Vercel Writing Guidelines. Use to review German docs or as the German style baseline with write-doc. Never for English."
+name: german-writing-guidelines
+description: "Apply German writing guidelines to technical docs, adapted from the Vercel Writing Guidelines. Use to review German docs or as the German style baseline with write-documentation. Never for English."
 ---
 
 # Schreibrichtlinien (Deutsch)
@@ -10,13 +10,13 @@ Deutsche Adaption der Vercel Writing Guidelines (vercel-labs/writing-guidelines)
 ## Anwendung
 
 - **Prüfen**: die genannten Dateien lesen und gegen die Regeln unten prüfen. Sind keine Dateien genannt, nachfragen. Befunde im Ausgabeformat am Ende melden: knapp, aber vollständig, Stichworte statt ganzer Sätze. Dateien nur ändern, wenn das ausdrücklich verlangt ist.
-- **Schreiben**: beim Verfassen oder Überarbeiten deutscher Dokumentation liefert `write-doc` den Dokumentations-Workflow (Brief, Gliederung, Verifikation, Sprachpaare und Dokumenttypen), `writing-style-guide` pflegt `docs/writing/style-guide.md` und `docs/writing/glossary.md`, und diese Richtlinien liefern die deutschen Stil-, Grammatik- und Typografieregeln als Basis. Vor der Abgabe gegen die Liste "Anti-Muster" prüfen.
+- **Schreiben**: beim Verfassen oder Überarbeiten deutscher Dokumentation liefert `write-documentation` den Dokumentations-Workflow (Brief, Gliederung, Verifikation, Sprachpaare und Dokumenttypen), und diese Richtlinien liefern die deutschen Stil-, Grammatik- und Typografieregeln als Basis. Vor der Abgabe gegen die Liste "Anti-Muster" prüfen.
 - Gilt nur für deutsche Dokumente. Englische Dokumente mit den englischen Richtlinien prüfen.
 
 ## Vorrang
 
-- `docs/writing/style-guide.md` und `docs/writing/glossary.md` gehen vor, wo sie etwas anderes festlegen (Anrede, Gendern, Fachbegriffe, Zahlenformate).
-- Wenn `write-doc` ein Dokument erstellt, gelten dessen Dokumenttypen (`write-doc`) und die Regel, dem Nutzer in seiner eigenen Sprache zu antworten; das deutsche Dokument selbst folgt diesen Schreibrichtlinien.
+- `docs/WRITING_STYLE.md` und `GLOSSARY.md` gehen vor, wo sie etwas anderes festlegen (Anrede, Gendern, Fachbegriffe, Zahlenformate).
+- Wenn `write-documentation` ein Dokument erstellt, gelten dessen Dokumenttypen (`write-documentation`) und die Regel, dem Nutzer in seiner eigenen Sprache zu antworten; das deutsche Dokument selbst folgt diesen Schreibrichtlinien.
 - Fehlt eine Festlegung: nicht raten, sondern Uneinheitlichkeit im Dokument melden (z. B. Wechsel zwischen `du` und `Sie`)
 - Code, Bezeichner, Befehle, Logausgaben und UI-Beschriftungen bleiben in ihrer Originalsprache und werden nicht nach diesen Regeln geprüft
 

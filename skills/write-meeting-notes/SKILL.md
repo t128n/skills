@@ -1,5 +1,5 @@
 ---
-name: meeting-notes
+name: write-meeting-notes
 description: "Turn rough notes, transcripts, or minutes into accurate meeting records with decisions, follow-ups, and open questions. Do not turn proposals into commitments."
 ---
 

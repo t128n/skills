@@ -1,6 +1,6 @@
 ---
-name: calendar
-description: Create validated iCalendar (.ics) files for import into calendar apps. Use when a user asks to create calendar events, appointments, reminders, recurring schedules, or an ICS file.
+name: write-ics
+description: "Create validated iCalendar (.ics) files for import into calendar apps. Use when a user asks to create calendar events, appointments, reminders, recurring schedules, or an ICS file."
 ---
 
 # Calendar files

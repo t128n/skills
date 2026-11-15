@@ -156,6 +156,21 @@ function nameOf(skillMd: string): string | undefined {
   }
 }
 
+const SKILL_NAME_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+/** Names of every skill in a repository, sorted. Unnamed or badly named skills are skipped. */
+export function listSkillNames(repoDir: string, source: string): string[] {
+  const names = new Map<string, string>();
+  for (const path of skillMdFiles(repoDir)) {
+    const name = nameOf(join(repoDir, path));
+    if (!name || name.length > 64 || !SKILL_NAME_RE.test(name)) continue;
+    const other = names.get(name);
+    if (other) fail(`${source}: skill "${name}" is ambiguous (${other}, ${dirname(path)}); add it to "exclude"`);
+    names.set(name, dirname(path));
+  }
+  return [...names.keys()].sort(compare);
+}
+
 /** Find the directory of a skill, by explicit path or else by the frontmatter name. Returns it relative to the repository. */
 export function findSkillDir(repoDir: string, skill: string, source: string, explicitPath?: string): string {
   if (explicitPath) {

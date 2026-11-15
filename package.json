@@ -11,7 +11,8 @@
     "skills:update": "bun lib/index.ts update",
     "skills:verify": "bun lib/index.ts verify",
     "typecheck": "tsc --noEmit",
-    "test": "bun test"
+    "test": "bun test",
+    "evals": "bun lib/evals/cli.ts"
   },
   "engines": {
     "node": ">=24.4.0"

@@ -3,10 +3,11 @@ import { join } from "node:path";
 import {
   assertLockMatchesConfig,
   depKey,
+  expandConfig,
   isGithubDep,
   loadConfig,
   loadLock,
-  type Config,
+  type ExpandedConfig,
   type Lock,
 } from "#lib/config.ts";
 import { PUBLIC_URL, SITE_PREFIX, WELL_KNOWN, type Paths } from "#lib/constants.ts";
@@ -28,7 +29,7 @@ export type VendorReader = (digest: string) => Buffer;
  */
 export async function assemble(
   paths: Paths,
-  config: Config,
+  config: ExpandedConfig,
   lock: Lock,
   ctx: Context,
   readVendor: VendorReader,
@@ -108,7 +109,7 @@ export async function build(paths: Paths, ctx: Context): Promise<void> {
     const staging = stagingDirFor(paths.dist);
     rmSync(staging, { recursive: true, force: true });
     try {
-      const registry = await assemble(paths, config, lock, ctx, (digest) => readVendored(paths.vendor, digest));
+      const registry = await assemble(paths, expandConfig(config, lock), lock, ctx, (digest) => readVendored(paths.vendor, digest));
       await stageAndVerify(staging, registry);
       publishDir(staging, paths.dist);
       console.log(`\nBuilt ${registry.all().length} skills into ${paths.dist}`);
