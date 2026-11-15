@@ -19,13 +19,26 @@ export interface SiteDep {
   as?: string;
 }
 
-export type Dep = GithubDep | SiteDep;
+/** Every skill in a repository. The lockfile lists the skills it resolved to. */
+export interface RepoDep {
+  source: string;
+  ref?: string;
+  exclude?: string[];
+}
+
+export type ConcreteDep = GithubDep | SiteDep;
+export type Dep = ConcreteDep | RepoDep;
 export type LockEntry = { commit: string } | { digest: string };
 export type Lock = Record<string, LockEntry>;
 
 export interface Config {
   $schema?: string;
   external: Dep[];
+}
+
+/** The config with every repository entry replaced by the skills the lockfile resolved for it. */
+export interface ExpandedConfig {
+  external: ConcreteDep[];
 }
 
 export interface IndexEntry {
@@ -50,8 +63,18 @@ function schemaErrors(validate: { errors?: unknown }): string {
   return ajv.errorsText(validate.errors as never, { dataVar: "", separator: "; " }).trim();
 }
 
+export function isRepoDep(dep: Dep): dep is RepoDep {
+  return "source" in dep && !("skill" in dep);
+}
+
 export function isGithubDep(dep: Dep): dep is GithubDep {
-  return "source" in dep;
+  return "source" in dep && "skill" in dep;
+}
+
+/** Does a repository entry cover this lockfile key? */
+export function coveredBy(repo: RepoDep, key: string): boolean {
+  const prefix = `${repo.source}#`;
+  return key.startsWith(prefix) && !(repo.exclude ?? []).includes(key.slice(prefix.length));
 }
 
 /** Strip the trailing slash so that one site has one identity. */
@@ -65,10 +88,11 @@ export function normalizeSite(site: string): string {
 }
 
 export function depKey(dep: Dep): string {
+  if (isRepoDep(dep)) return `${dep.source}#*`;
   return `${isGithubDep(dep) ? dep.source : normalizeSite(dep.site)}#${dep.skill}`;
 }
 
-export function publishedName(dep: Dep): string {
+export function publishedName(dep: ConcreteDep): string {
   return dep.as ?? dep.skill;
 }
 
@@ -83,6 +107,7 @@ export function parseConfig(raw: unknown, label = "skills.config.json"): Config 
     const key = depKey(dep);
     if (keys.has(key)) fail(`${label}: duplicate dependency ${key}`);
     keys.add(key);
+    if (isRepoDep(dep)) continue; // its skill names are known only after resolving
     const name = publishedName(dep);
     const other = names.get(name);
     if (other) fail(`${label}: ${key} and ${other} both publish the name "${name}"; use "as" to rename one`);
@@ -128,16 +153,49 @@ export interface LockProblems {
 export function checkLock(config: Config, lock: Lock): LockProblems {
   const problems: LockProblems = { missing: [], stale: [], wrongType: [] };
   const wanted = new Set<string>();
+  const repos = config.external.filter(isRepoDep);
   for (const dep of config.external) {
     const key = depKey(dep);
+    if (isRepoDep(dep)) {
+      const covered = Object.keys(lock).filter((k) => coveredBy(dep, k));
+      if (covered.length === 0) problems.missing.push(key);
+      for (const k of covered) if (!("commit" in lock[k])) problems.wrongType.push(k);
+      continue;
+    }
     wanted.add(key);
     const entry = lock[key];
     if (!entry) problems.missing.push(key);
     else if ("commit" in entry !== isGithubDep(dep)) problems.wrongType.push(key);
   }
-  for (const key of Object.keys(lock)) if (!wanted.has(key)) problems.stale.push(key);
+  for (const key of Object.keys(lock)) {
+    if (!wanted.has(key) && !repos.some((repo) => coveredBy(repo, key))) problems.stale.push(key);
+  }
   for (const list of Object.values(problems)) list.sort(compare);
   return problems;
+}
+
+/** Replace each repository entry by one dependency per skill the lockfile resolved for it. */
+export function expandConfig(config: Config, lock: Lock): ExpandedConfig {
+  const explicit = new Set(config.external.filter((dep) => !isRepoDep(dep)).map(depKey));
+  const external: ConcreteDep[] = [];
+  for (const dep of config.external) {
+    if (!isRepoDep(dep)) {
+      external.push(dep);
+      continue;
+    }
+    for (const key of Object.keys(lock).sort(compare)) {
+      if (!coveredBy(dep, key) || explicit.has(key)) continue;
+      external.push({ source: dep.source, skill: key.slice(dep.source.length + 1), ...(dep.ref ? { ref: dep.ref } : {}) });
+    }
+  }
+  const names = new Map<string, string>();
+  for (const dep of external) {
+    const name = publishedName(dep);
+    const other = names.get(name);
+    if (other) fail(`${depKey(dep)} and ${other} both publish the name "${name}"; use "exclude" or "as" to resolve it`);
+    names.set(name, depKey(dep));
+  }
+  return { external };
 }
 
 /** Throw an error that names every problem and the command that fixes it. */

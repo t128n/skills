@@ -8,7 +8,7 @@
     "external": {
       "type": "array",
       "items": {
-        "oneOf": [{ "$ref": "#/$defs/githubSource" }, { "$ref": "#/$defs/siteSource" }]
+        "oneOf": [{ "$ref": "#/$defs/githubSource" }, { "$ref": "#/$defs/repoSource" }, { "$ref": "#/$defs/siteSource" }]
       }
     }
   },
@@ -31,6 +31,17 @@
         "as": { "$ref": "#/$defs/skillName" }
       },
       "required": ["source", "skill"],
+      "additionalProperties": false
+    },
+    "repoSource": {
+      "description": "Every skill in a GitHub repository, like `skills add owner/repo`. Resolved skills are listed in the lockfile.",
+      "type": "object",
+      "properties": {
+        "source": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+        "ref": { "type": "string", "minLength": 1 },
+        "exclude": { "type": "array", "items": { "$ref": "#/$defs/skillName" }, "uniqueItems": true }
+      },
+      "required": ["source"],
       "additionalProperties": false
     },
     "siteSource": {
