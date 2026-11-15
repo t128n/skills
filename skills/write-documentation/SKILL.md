@@ -1,6 +1,6 @@
 ---
-name: "write-doc"
-description: "Write or revise technical documentation (guidelines, how-tos, tutorials, reference, explanations, READMEs) in German or English, following the project's style guide. Not for specs, plans, or ADRs."
+name: write-documentation
+description: "Write or revise official technical documentation (guidelines, how-tos, tutorials, reference, explanations, READMEs) in German or English, following the project's style guide. Not for specs, plans, ADRs, RFCs, or messages (use communicate)."
 ---
 
 # Write doc
@@ -10,14 +10,14 @@ Write documentation that reads as if one careful author wrote all of it. Consist
 ## When to stay out of the way
 
 - If a grilling, interview or brainstorming skill is running, or the user is still deciding what the document should say, do not start drafting. Wait until they ask for the document.
-- Feature specs, implementation plans and ADRs belong to the `planning` skill and the folders `docs/specs/`, `docs/plans/` and `docs/adrs/`. Do not write those here.
+- Specs and tickets belong in the issue tracker (`to-spec`, `to-tickets`), ADRs in `docs/adr/` (`domain-modeling`), RFCs to the `write-rfc` skill. Do not write those here.
 - For a small fix such as a typo or one corrected sentence, make the edit directly and skip the steps below, but still use the glossary's terms.
 
 ## Step 1: Load the rules
 
-1. Read `docs/writing/style-guide.md` and `docs/writing/glossary.md`. If the repository keeps its prose style guide somewhere else, use that one.
-2. If no style guide exists, say so once and suggest the `writing-style-guide` skill. Then continue: read two or three neighbouring documents of the same type and language and follow their conventions, so that the new document at least matches its surroundings.
-3. For German documents, also load `schreibrichtlinien` as the baseline for German prose, grammar, typography, and anti-patterns. Project rules in `docs/writing/style-guide.md` and `docs/writing/glossary.md` take precedence where they differ; `write-doc` still governs the authoring workflow, document types, and bilingual pairing.
+1. Read `docs/WRITING_STYLE.md` and `GLOSSARY.md`. If the repository keeps its prose style guide somewhere else, use that one.
+2. If no style guide exists, say so once. Then continue: read two or three neighbouring documents of the same type and language and follow their conventions, so that the new document at least matches its surroundings.
+3. For German documents, also load `german-writing-guidelines` as the baseline for German prose, grammar, typography, and anti-patterns. Project rules in `docs/WRITING_STYLE.md` and `GLOSSARY.md` take precedence where they differ; `write-documentation` still governs the authoring workflow, document types, and bilingual pairing.
 4. Read the reference examples the style guide names for this document type. Examples carry tone more reliably than rules do.
 
 ## Step 2: Settle language, type and reader

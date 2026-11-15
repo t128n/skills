@@ -1,6 +1,6 @@
 ---
-name: communicate
-description: "Use only when asked to draft, reply to, or send a message on the user's behalf (GitHub, Teams, Outlook, etc.). Not for normal replies or documentation. Disclose OpenCode authorship."
+name: write-message
+description: "Draft, reply to, or send a message on the user's behalf (GitHub, Teams, Outlook, etc.). Use only on explicit request, never for normal replies or documentation. Disclose OpenCode authorship."
 ---
 
 # Communicate

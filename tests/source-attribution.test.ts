@@ -34,9 +34,9 @@ describe("mirrored skill source attribution", () => {
   });
 
   test("changes only index metadata, not the archive digest", async () => {
-    const files = readSkillFiles(join(REPO_ROOT, "skills", "calendar"));
-    const original = await packSkill(files, { name: "calendar" }, "calendar");
-    const attributed = await packSkill(files, { name: "calendar", sourceUrl: "https://example.com/skill" }, "calendar");
+    const files = readSkillFiles(join(REPO_ROOT, "skills", "write-ics"));
+    const original = await packSkill(files, { name: "write-ics" }, "write-ics");
+    const attributed = await packSkill(files, { name: "write-ics", sourceUrl: "https://example.com/skill" }, "write-ics");
     expect(Buffer.compare(attributed.bytes, original.bytes)).toBe(0);
     expect(attributed.description).toBe(`${original.description} [source: https://example.com/skill]`);
   });

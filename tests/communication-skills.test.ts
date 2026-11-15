@@ -7,14 +7,14 @@ import { buildLocalSkills } from "#lib/sources/local.ts";
 import { REPO_ROOT } from "./helpers.ts";
 
 const skills = {
-  communicate: [],
-  "meeting-notes": [
+  "write-message": [],
+  "write-meeting-notes": [
     "references/meeting-minutes.md",
     "references/decisions.md",
     "references/action-items.md",
     "templates/meeting-notes.md",
   ],
-  briefing: [
+  "write-briefing": [
     "references/meeting-prep.md",
     "references/executive-summary.md",
     "references/decision-memo.md",
@@ -47,7 +47,7 @@ describe("communication skills", () => {
   test("local discovery publishes every communication skill", async () => {
     const published = await buildLocalSkills(join(REPO_ROOT, "skills"));
     for (const name of Object.keys(skills)) {
-      const expected = name === "communicate" ? "skill-md" : "archive";
+      const expected = name === "write-message" ? "skill-md" : "archive";
       expect(published.find((s) => s.name === name)?.type).toBe(expected);
     }
   });
