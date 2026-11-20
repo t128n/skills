@@ -49,6 +49,6 @@ jobs:
           body-path: ${{ runner.temp }}/update-summary.md
           branch: chore/update-skills
           delete-branch: true
-          add-paths: |
-            skills.lock.json
-            vendor/sha256/**
+          # No add-paths: a pathspec such as vendor/sha256/** makes `git add` fail
+          # when that directory does not exist (no site-sourced skills). The update
+          # only changes skills.lock.json and vendor/, and dist/ is gitignored.
