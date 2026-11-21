@@ -1,121 +1,124 @@
 {
   "$schema": "./schemas/skills.lock.schema.json",
   "anthropics/skills#skill-creator": {
-    "commit": "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064"
+    "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba"
   },
   "mattpocock/skills#ask-matt": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#chief-of-staff": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#code-review": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#codebase-design": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#diagnosing-bugs": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#domain-modeling": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#grill-me": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#grill-with-docs": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#grilling": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#handoff": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#implement": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#implement-spec": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#improve-codebase-architecture": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#loop-me": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#pr": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#prototype": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#research": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#retro": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#setup-matt-pocock-skills": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+  },
+  "mattpocock/skills#software-factory": {
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#tdd": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#teach": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#to-questionnaire": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#to-spec": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#to-tickets": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#triage": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#wait-what": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#wayfinder": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#wizard": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#writing-beats": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#writing-for-agents": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#writing-fragments": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "mattpocock/skills#writing-shape": {
-    "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
   },
   "obsidianmd/obsidian-skills#defuddle": {
-    "commit": "398127736bd4ba42d767b1419fee1a927508370b"
+    "commit": "b110b2f8e9eb1f287892f937050dfd40af862cbb"
   },
   "vercel-labs/agent-desktop#agent-desktop": {
-    "commit": "8ffecc1d3d088727f8d84baf4dde0224aab2e8ad"
+    "commit": "e8934a5e95e1d212c74ead95cd3e4701c04eca31"
   },
   "vercel-labs/agent-skills#web-design-guidelines": {
-    "commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
+    "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb"
   },
   "vercel-labs/agent-skills#writing-guidelines": {
-    "commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
+    "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb"
   },
   "vercel-labs/opensrc#opensrc": {
     "commit": "b51de60867e806da1839b33dd29c29424f12521b"
   },
   "vercel-labs/skills#find-skills": {
-    "commit": "b716f9dc2ba36b6aa8f0080615e5a3a6caeac63b"
+    "commit": "57217cf86ba38148a57af9e90d14a4c049558330"
   },
   "vercel-labs/webreel#webreel": {
     "commit": "1504682685514107e48a1696490666eb9ed7da14"
