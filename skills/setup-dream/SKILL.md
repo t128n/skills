@@ -1,20 +1,20 @@
 ---
 name: setup-dream
-description: One-time setup for the dream skill. Picks the transcript source (OpenCode v2 by default) and the wiki (plain wiki/ dir by default), then writes docs/agents/dream.md, the extractor script and a pointer block in AGENTS.md/CLAUDE.md. Run only when the user invokes it.
+description: "Set up the dream skill once per repo: pick the transcript source (OpenCode v2 by default) and the wiki (docs/agents/wiki by default), then write docs/agents/dream.md, the extractor script and a pointer block in AGENTS.md or CLAUDE.md. Use when the user invokes /setup-dream."
 ---
 
 # Setup Dream
 
 Scaffold the per-repo configuration that the `dream` skill reads. Run once, then again only to switch harness or wiki.
 
-This is a user-invoked skill. Do not run it on your own. Never edit the `dream` skill's own files: everything you write goes into the repo (`docs/agents/`, `wiki/`, the pointer block).
+This is a user-invoked skill. Do not run it on your own. Never edit the `dream` skill's own files: everything you write goes into the repo (`docs/agents/`, including `docs/agents/wiki/`, and the pointer block).
 
 ## Process
 
 ### 1. Look first, silently
 
 - Does `docs/agents/dream.md` already exist? If so, show it and ask what to change instead of starting over.
-- Is an `opencode` binary on PATH, or does `opencode debug paths db` print an existing file? Is there a `wiki/` directory?
+- Is an `opencode` binary on PATH, or does `opencode debug paths db` print an existing file? Is there a `docs/agents/wiki/` directory, or a legacy `wiki/` directory (offer to move it with `git mv`, and fix its `[[links]]` only if they break)?
 - Which of `AGENTS.md` / `CLAUDE.md` exist at the repo root?
 - Are wiki-capable MCP tools in this session (list/read/search/write pages)? Note their exact names.
 
@@ -24,10 +24,10 @@ This is a user-invoked skill. Do not run it on your own. Never edit the `dream` 
    - `opencode-v2` (default): read OpenCode v2's SQLite database through the extractor in step 4. Needs no running server.
    - `command`: any command that prints the JSONL contract described in the `dream` skill. Ask for the command. Offer to help write the extractor if the harness stores sessions locally.
 2. **Wiki**
-   - `dir` (default): a plain `wiki/` directory of markdown pages with `[[links]]` and an `index.md`. Ask for the path if not `wiki/`.
+   - `dir` (default): a plain `docs/agents/wiki/` directory of markdown pages with `[[links]]` and an `index.md`. Ask for the path if not `docs/agents/wiki/`.
    - `mcp`: a wiki behind MCP tools (for example an Orbit vault). Ask which tools list, read, search and write pages. Ask whether the server can back up or undo, and whether it can write several pages atomically. Record the answers as capability flags.
 3. **Scope**: only sessions whose directory is inside this repo (default), or every project on this machine.
-4. **Goal**: one or two sentences on what future sessions should know from past ones. State a purpose, not a procedure. Example: "Keep track of who owns which service, decisions and why they were made, and what broke before."
+4. **Goal**: one or two sentences on what future sessions should know from past ones, and that the wiki is pruned on every run. State a purpose, not a procedure. Example: "Keep track of who owns which service, decisions and why they were made, and what broke before. Drop what is obvious, stale or duplicated."
 
 ### 3. Show the draft config, let the user edit, then write
 
@@ -48,18 +48,19 @@ Read by the `dream` skill. Edit freely. Re-run /setup-dream only to switch harne
 
 ## Wiki
 - kind: dir | mcp
-- path: wiki/
-- index: wiki/index.md
+- path: docs/agents/wiki/
+- index: docs/agents/wiki/index.md
 - mcp_tools: list=<tool>, read=<tool>, search=<tool>, write=<tool>   # kind=mcp only
 - can_backup: true
 - can_search: true
 - can_bulk_write: true
-- backup_dir: wiki/.dream/backups/
-- watermark: wiki/.dream/watermark
-- log: wiki/.dream/log.md
+- backup_dir: docs/agents/wiki/.dream/backups/
+- watermark: docs/agents/wiki/.dream/watermark
+- log: docs/agents/wiki/.dream/log.md
 
 ## Limits
 - max_sessions_per_run: 50
+- prune: true   # dream also deletes, merges and trims obsolete or obvious pages each run
 ```
 
 For `kind: dir`, set the three `can_*` flags to true. For `kind: mcp`, use the answers from step 2. When `can_backup` is false, `dream` writes proposals instead of editing pages. If the scope is every project, drop `--directory {repo_root}` from the command.
@@ -250,7 +251,7 @@ If the user chose `command`, ask them to confirm that the first lines of their c
 
 ### 5. Create the wiki skeleton
 
-- `kind: dir`: create the directory with an `index.md` containing only a title and a line saying it is maintained by /dream. Create `wiki/.dream/` and add `wiki/.dream/backups/` to `.gitignore`.
+- `kind: dir`: create the directory with an `index.md` containing only a title and a line saying it is maintained by /dream. Create `docs/agents/wiki/.dream/` and add `docs/agents/wiki/.dream/backups/` to `.gitignore`.
 - `kind: mcp`: create nothing. Check that the list and read tools respond, and say so if they do not.
 
 ### 6. Add the pointer block
@@ -259,7 +260,7 @@ Add this to the repo's `AGENTS.md` or `CLAUDE.md` (whichever exists; ask if both
 
 ```markdown
 ## Memory
-Past sessions are consolidated into the wiki by the `dream` skill. Start from `wiki/index.md` and follow links for detail. Config: `docs/agents/dream.md`.
+Past sessions are consolidated into the wiki by the `dream` skill. Start from `docs/agents/wiki/index.md` and follow links for detail. Config: `docs/agents/dream.md`.
 ```
 
 For an `mcp` wiki, replace the second sentence with how to open the index through the MCP tools.
