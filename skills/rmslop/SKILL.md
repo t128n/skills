@@ -1,12 +1,12 @@
 ---
-name: review-slop
-description: "Remove AI-generated slop from the current branch's diff so it reads like a human wrote it in the style of the surrounding code, without changing behavior. Use when the user explicitly asks to remove slop, clean up AI-written changes, or invokes /review-slop. Never run unprompted, because it edits code."
+name: rmslop
+description: "Remove AI-generated slop from the current branch's diff so it reads like a human wrote it in the style of the surrounding code, without changing behavior. Use when the user explicitly asks to remove slop, clean up AI-written changes, or invokes /rmslop. Never run unprompted, because it edits code."
 disable-model-invocation: true
 ---
 
-# Review Slop
+# rmslop
 
-Strip the tells of machine-written code from what this branch introduced, so the diff matches the code around it. Inspired by the `rmslop` command in [nexxeln/dots](https://github.com/nexxeln/dots).
+Pairs with `code-review`: that finds problems in the diff, this cleans up its style.
 
 ## Scope
 
