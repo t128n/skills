@@ -6,8 +6,9 @@ import { parseFrontmatter } from "#lib/frontmatter.ts";
 import { buildLocalSkills } from "#lib/sources/local.ts";
 import { REPO_ROOT } from "./helpers.ts";
 
-const skills = {
+const skills: Record<string, string[]> = {
   "write-message": [],
+  "write-daily": [],
   "write-meeting-notes": [
     "references/meeting-minutes.md",
     "references/decisions.md",
@@ -46,8 +47,8 @@ describe("communication skills", () => {
 
   test("local discovery publishes every communication skill", async () => {
     const published = await buildLocalSkills(join(REPO_ROOT, "skills"));
-    for (const name of Object.keys(skills)) {
-      const expected = name === "write-message" ? "skill-md" : "archive";
+    for (const [name, resources] of Object.entries(skills)) {
+      const expected = resources.length === 0 ? "skill-md" : "archive";
       expect(published.find((s) => s.name === name)?.type).toBe(expected);
     }
   });
