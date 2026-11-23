@@ -31,7 +31,7 @@ If the reference is ambiguous, ask.
 2. **Slice vertically.** Each Story is a narrow but complete path, demoable or verifiable on its own. Never a layer ("the schema", "the UI"). If a Story looks too big, slice it. Never size, estimate, point or rank by effort.
 3. **Detail only the next Stories.** Later work stays as one-line candidates in the Epic. Do not draft them.
 4. **Note blocking relations** only where one Story cannot start before another is done. Prefer no relation over a speculative one.
-5. **Write each Story** with the template below. Every acceptance criterion is a checkable statement: someone can run, read or observe something and answer yes or no. Rewrite or drop "works well", "is robust", "is clean". Avoid file paths and code snippets, they go stale.
+5. **Write each Story** with the Story template. Every acceptance criterion is a checkable statement: someone can run, read or observe something and answer yes or no. Rewrite or drop "works well", "is robust", "is clean". Avoid file paths and code snippets, they go stale.
 6. **Check readiness** (next section) for each Story.
 7. **Confirm.** Show the numbered list: title, kind, one-line outcome, blockers, readiness. Ask whether the granularity and the blocking relations are right. Iterate until the user approves. Do not publish before this.
 8. **Publish** the ready, approved Stories (see Publishing).
@@ -52,49 +52,17 @@ If a Story is not ready, **do not publish it.** Report it with its gaps, as a li
 
 Do not add a risk field. Do not guess missing facts to make a Story pass.
 
-## Story template
+## Templates
 
-Omit nothing, write "None" where a section has nothing.
-
-```markdown
-## Goal
-What outcome do we want, and why does it matter?
-
-## Context
-Links to the tracker, docs and repositories. Relevant background.
-
-## Acceptance criteria
-- [ ] ...
-
-## Constraints
-Boundaries, out of scope, things not to touch.
-
-## Access
-Repositories, systems and permissions the lead agent needs.
-```
-
-## Defect template
-
-Use this instead of the Story template when the item describes a defect.
-
-```markdown
-## Symptom
-What goes wrong, and what did you expect instead?
-
-## Affected system
-Which system, service or repository?
-
-## Evidence
-Logs, screenshots, links, reproduction steps. Whatever you have.
-```
+- Story: [references/story-template.md](references/story-template.md)
+- Defect, when the item describes a defect: [references/defect-template.md](references/defect-template.md)
 
 ## Publishing
 
-Use the project's configured tracker and its skill (for GitHub, the `github` skill).
+Use the project's configured tracker and its skill.
 
 - Publish blockers first, so blocking relations can use real identifiers. Use the tracker's native blocking relation where it has one, otherwise a "Blocked by" line in Context.
 - Link each Story to its Epic as its parent (a sub-issue where supported).
-- Use an idempotency key: derive it from the Epic id (or the conversation topic) plus the Story title, put it in the body as `<!-- to-story: <key> -->`, and search the tracker for it before creating. If it exists, update or skip. Never create a duplicate on a rerun.
 - Do not close or edit the Epic, except to turn a candidate line into a link to the new Story, and only if the user agreed.
 - Do not set labels that mean "ready" by themselves. Readiness is the Definition of Ready.
 - After publishing, report each Story with its link and any relations.
