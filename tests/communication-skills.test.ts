@@ -6,9 +6,11 @@ import { parseFrontmatter } from "#lib/frontmatter.ts";
 import { buildLocalSkills } from "#lib/sources/local.ts";
 import { REPO_ROOT } from "./helpers.ts";
 
-const skills = {
+const skills: Record<string, string[]> = {
   "write-message": [],
   "setup-writing-style": [],
+  "write-daily": [],
+  "setup-daily": [],
   "write-meeting-notes": [
     "references/meeting-minutes.md",
     "references/decisions.md",
