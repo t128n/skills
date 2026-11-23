@@ -1,5 +1,5 @@
 ---
-name: write-epic
+name: to-epic
 description: "Shape a raw conversation, note or link into an Epic (outcome, scope, success criteria, context, next Stories) and publish it to the project tracker once, after confirmation. Use when asked to turn a discussion into an Epic, to shape a note into an Epic, or to propose the next Stories of an Epic."
 ---
 
