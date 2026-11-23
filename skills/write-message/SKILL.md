@@ -1,6 +1,6 @@
 ---
 name: write-message
-description: "Draft, reply to, or send a message on the user's behalf (GitHub, Teams, Outlook, etc.). Use only on explicit request, never for normal replies or documentation. Disclose OpenCode authorship."
+description: "Draft, reply to, or send a message on the user's behalf (GitHub, Teams, Outlook, etc.), in the user's personal writing style when one is set up. Use only on explicit request, never for normal replies, PR descriptions, commit messages or documentation. Disclose OpenCode authorship."
 ---
 
 # Communicate
@@ -22,10 +22,9 @@ producing a polished response.
 - Explain technical constraints in plain language.
 - Use "I" for personal positions and "we" for team positions.
 - Match the recipient's language and level of formality.
-- Use lowercase naturally, especially in informal discussions.
 - Prefer paragraphs over lists unless lists improve clarity.
 - Keep it short and direct. High signal over noise.
-- Avoid em dashes in prose; use a comma, colon, or full stop.
+- Avoid em dashes in prose; use a comma, colon, or full stop. The attribution trailer is the one exception.
 
 Don't force short sentences when a longer one reads better.
 Writing should flow naturally, not sound like bullet points
@@ -107,26 +106,19 @@ Outlook:
 - Avoid unnecessary corporate formality.
 - Include a clear subject for new emails.
 
-## Sign-off
+## Personal style
 
-Close email and longer written messages with the sender's usual sign-off:
+Read `~/.agents/writing-style.md` first. It holds the user's own habits: language, greeting, sign-off, form of address and words to avoid. Apply it on top of the voice above, in every channel. It overrides the generic voice where they differ, but never the Attribution trailer or the Before sending checks.
 
-- `BR <name>` in English.
-- `VG <name>` in German.
+If the file is missing, tell the user to run `/setup-writing-style` and continue with the generic voice. Don't guess a sign-off or a name; ask if one is needed.
 
-Short chat replies can skip it. Use the name the sender actually uses. Ask if it is not clear; don't guess.
+When the user corrects a draft in a way that reveals a preference, update the file and say what changed in one sentence. Keep patterns only, no confidential facts.
 
-When an email covers more than one topic, start each block with a topic marker:
+Never copy content from the file into a repo, and don't quote it back unless asked.
 
-```
-// DPA
+## Scope
 
-...
-
-// Invoice 2041
-
-...
-```
+Use this skill for messages written in the user's name: chat messages, emails and comments. Don't use the personal style for PR descriptions, commit messages, issues filed for the work, newsletters or documents. They follow their own skills and conventions.
 
 ## Attribution
 

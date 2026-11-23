@@ -8,7 +8,9 @@ import { REPO_ROOT } from "./helpers.ts";
 
 const skills: Record<string, string[]> = {
   "write-message": [],
+  "setup-writing-style": [],
   "write-daily": [],
+  "setup-daily": [],
   "write-meeting-notes": [
     "references/meeting-minutes.md",
     "references/decisions.md",
@@ -45,10 +47,18 @@ describe("communication skills", () => {
     });
   }
 
+  test("write-message keeps personal details out and reads the style file", () => {
+    const content = readFileSync(join(REPO_ROOT, "skills", "write-message", "SKILL.md"), "utf8");
+    expect(content).toContain("~/.agents/writing-style.md");
+    expect(content).toContain("/setup-writing-style");
+    expect(content).not.toContain("BR <name>");
+    expect(content).not.toContain("VG <name>");
+  });
+
   test("local discovery publishes every communication skill", async () => {
     const published = await buildLocalSkills(join(REPO_ROOT, "skills"));
-    for (const [name, resources] of Object.entries(skills)) {
-      const expected = resources.length === 0 ? "skill-md" : "archive";
+    for (const name of Object.keys(skills)) {
+      const expected = skills[name as keyof typeof skills].length === 0 ? "skill-md" : "archive";
       expect(published.find((s) => s.name === name)?.type).toBe(expected);
     }
   });

@@ -7,10 +7,14 @@ description: "Draft the user's daily standup as a 3P update (Progress, Plans, Pr
 
 Draft the user's daily standup as a 3P update: Progress, Plans, Problems. Infer as much as you can, ask only for the gaps, and hand over a draft. Never post or send it. A standup is a message to colleagues, so the user approves first.
 
+## Setup
+
+Read `~/.agents/daily.md` first. It names the tracker, where the previous standup lives, the repositories to check, and the user's name and team. If it is missing, tell the user to run `/setup-daily` and continue by asking once for those details. Don't guess a tracker or a name.
+
 ## Workflow
 
 1. **Find the time window.** Use the user's previous standup if you can read it. Otherwise use the last working day and say so, so the user can correct it. If the user names days ("Friday too, I was out Thursday"), cover those.
-2. **Infer from every source you can reach.** Never ask for something you can find.
+2. **Infer from the sources in the setup file, plus any other you can reach.** Never ask for something you can find.
    - Tracker: Stories the user finished, moved or started in the window, and what is in progress or in review. Note blockers and cycle time.
    - GitHub: the user's PRs that were opened, merged or wait for review, and review requests waiting on the user.
    - Agent sessions: the user's sessions since the window start, for what was worked on and where it got stuck.
