@@ -63,6 +63,7 @@ Use the project's configured tracker and its skill.
 
 - Publish blockers first, so blocking relations can use real identifiers. Use the tracker's native blocking relation where it has one, otherwise a "Blocked by" line in Context.
 - Link each Story to its Epic as its parent (a sub-issue where supported).
+- Search the tracker for an existing Story with the same title before creating. If one exists, update or skip it. Never create a duplicate on a rerun.
 - Do not close or edit the Epic, except to turn a candidate line into a link to the new Story, and only if the user agreed.
 - Do not set labels that mean "ready" by themselves. Readiness is the Definition of Ready.
 - After publishing, report each Story with its link and any relations.
