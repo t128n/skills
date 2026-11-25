@@ -17,7 +17,7 @@ Write documentation that reads as if one careful author wrote all of it. Consist
 
 1. Read `docs/WRITING_STYLE.md` and `GLOSSARY.md`. If the repository keeps its prose style guide somewhere else, use that one.
 2. If no style guide exists, say so once. Then continue: read two or three neighbouring documents of the same type and language and follow their conventions, so that the new document at least matches its surroundings.
-3. For English documents there is no baseline skill: the style guide and the neighbouring documents are the only source. Say so if neither exists.
+3. For English documents, also load `writing-guidelines` (from vercel-labs/agent-skills, already in `skills.config.json`) as the baseline for English prose, grammar, typography, and anti-patterns.
 4. For German documents, also load `german-writing-guidelines` as the baseline for German prose, grammar, typography, and anti-patterns. Project rules in `docs/WRITING_STYLE.md` and `GLOSSARY.md` take precedence where they differ; `write-documentation` still governs the authoring workflow, document types, and bilingual pairing.
 5. Read the reference examples the style guide names for this document type. Examples carry tone more reliably than rules do.
 
