@@ -13,22 +13,44 @@ Write an RFC when a change is consequential and feedback would change the outcom
 
 ## Rules
 
-1. **Look first.** Read `docs/rfcs/` and `docs/adr/`, plus the code the change touches. Follow the project's naming and status words. Do not reopen decisions an accepted ADR settled. Link it.
-2. **State the problem before the solution.** A reviewer must be able to disagree with the problem.
-3. **Be concrete.** Name interfaces, data shapes, and behavior changes. No filler about benefits or "robustness".
-4. **Real alternatives.** Include "do nothing" when it is credible. Give each alternative a reason it lost.
-5. **Mark what is unknown.** Open questions go in their own section, with who or what resolves each. Do not hide them in prose.
-6. **Never invent approval.** New RFCs are `status: draft`. Move to `in review`, `accepted`, `rejected`, or `withdrawn` only when a human says so.
-7. **End in an ADR.** When the RFC is accepted and the decision is expensive to reverse, record it as an ADR in `docs/adr/` (the `domain-modeling` skill does this). Link both ways. The RFC stays as history.
-8. **Diagram only if prose cannot do the job.** One Mermaid diagram at most.
+1. **Match the language.** A German RFC uses the German headings from Language, not the English template below.
+2. **Look first.** Read `docs/rfcs/` and `docs/adr/`, plus the code the change touches. Follow the project's naming and status words. Do not reopen decisions an accepted ADR settled. Link it.
+3. **State the problem before the solution.** A reviewer must be able to disagree with the problem.
+4. **Be concrete.** Name interfaces, data shapes, and behavior changes. No filler about benefits or "robustness".
+5. **Real alternatives.** Include "do nothing" when it is credible. Give each alternative a reason it lost.
+6. **Mark what is unknown.** Open questions go in their own section, with who or what resolves each. Do not hide them in prose.
+7. **Never invent approval.** New RFCs are `status: draft`. Move to `in review`, `accepted`, `rejected`, or `withdrawn` only when a human says so.
+8. **End in an ADR.** When the RFC is accepted and the decision is expensive to reverse, record it as an ADR in `docs/adr/` (the `domain-modeling` skill does this). Link both ways. The RFC stays as history.
+9. **Diagram only if prose cannot do the job.** One Mermaid diagram at most.
+10. **Verify claims about today's behavior.** Check each statement about current behavior against the code, configuration or docs. Mark what you could not verify, and say so in the open questions.
 
 ## File
 
 Path: `docs/rfcs/<slug>.md`, or the project's convention. `<slug>` is lowercase and hyphenated.
 
+## Language
+
+Write the RFC in the language the user asks in, or the project's documentation language. For German, load `german-writing-guidelines` first and use exactly these headings. Frontmatter keys and status words stay English.
+
+```markdown
+# RFC: <Titel>
+
+## Problem
+
+## Vorschlag
+
+## Betrachtete Alternativen
+
+## Risiken und offene Fragen
+
+## Einführung und Verifikation
+
+## Entscheidung
+```
+
 ## Structure
 
-Use these headings, in this order. Drop an optional section instead of leaving it empty.
+Use these headings, in this order. In a German RFC, use the translated headings from Language instead; do not mix English headings into German text. Drop an optional section instead of leaving it empty.
 
 ```markdown
 ---
@@ -49,7 +71,7 @@ reviewers: <names, if known>
 <The solution: interfaces, data, behavior, and what changes for users or operators.
 State what is out of scope.>
 
-## Alternatives Considered
+## Alternatives considered
 
 ### <Alternative A>
 
@@ -59,11 +81,11 @@ State what is out of scope.>
 
 <What it is. Why it lost.>
 
-## Risks and Open Questions
+## Risks and open questions
 
-- <Risk or question> — <how and by whom it gets resolved>
+- <Risk or question>: <how and by whom it gets resolved>
 
-## Rollout and Verification
+## Rollout and verification
 
 <Optional. How it is verified, deployed, and reversed.>
 
@@ -78,3 +100,4 @@ State what is out of scope.>
 - Does each alternative say why it lost?
 - Is every open question owned or resolvable?
 - Is the status `draft` unless a human changed it?
+- Is every statement about current behavior verified or marked as unverified?

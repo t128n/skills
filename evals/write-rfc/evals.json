@@ -1,0 +1,39 @@
+{
+  "skill_name": "write-rfc",
+  "triggers": [
+    { "id": "rfc-explicit", "prompt": "Write an RFC proposing that we replace the cron-based sync with webhooks.", "should_trigger": true },
+    { "id": "rfc-german", "prompt": "Schreibe einen RFC zum Wechsel der Job-Queue auf Postgres.", "should_trigger": true },
+    { "id": "design-feedback", "prompt": "This change affects three teams and has several credible approaches. Draft a proposal we can circulate for review before we build anything.", "should_trigger": true },
+    { "id": "howto", "prompt": "Write a how-to for setting up the local dev environment.", "should_trigger": false },
+    { "id": "typo", "prompt": "Fix the typo in the third paragraph of README.md.", "should_trigger": false },
+    { "id": "message", "prompt": "Draft a Teams message that the release slipped by a day.", "should_trigger": false }
+  ],
+  "behaviors": [
+    {
+      "id": "writes-draft-rfc",
+      "name": "writes a draft RFC with fixed structure",
+      "prompt": "Write an RFC proposing that we replace the nightly cron sync with webhooks. Invent plausible details and do not ask questions.",
+      "checks": [
+        { "type": "skill_invoked", "skill": "write-rfc", "description": "loads the skill" },
+        { "type": "wrote_file", "path": "docs/rfcs/.+\\.md$", "description": "writes under docs/rfcs/" },
+        { "type": "wrote_file", "content": "status: draft", "description": "status is draft" },
+        { "type": "no_write_matching", "content": "status: (accepted|in review)", "description": "never invents approval" },
+        { "type": "wrote_file", "content": "## Problem", "description": "has a Problem section" },
+        { "type": "wrote_file", "content": "## Alternatives considered", "description": "has an Alternatives section" },
+        { "type": "wrote_file", "content": "## Risks and open questions", "description": "has an open questions section" },
+        { "type": "no_write_matching", "content": "—", "description": "uses no em dash" }
+      ]
+    },
+    {
+      "id": "german-rfc",
+      "name": "German RFC uses German headings and baseline",
+      "prompt": "Schreibe einen RFC zum Wechsel der Job-Queue auf Postgres. Erfinde plausible Details und stelle keine Rückfragen.",
+      "checks": [
+        { "type": "skill_invoked", "skill": "german-writing-guidelines", "description": "loads the German baseline" },
+        { "type": "wrote_file", "content": "## Vorschlag", "description": "German proposal heading" },
+        { "type": "wrote_file", "content": "## Betrachtete Alternativen", "description": "German alternatives heading" },
+        { "type": "wrote_file", "content": "status: draft", "description": "status key stays English" }
+      ]
+    }
+  ]
+}
