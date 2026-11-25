@@ -14,7 +14,7 @@ Turn a conversation, or an existing Epic, into **Stories** that one lead agent c
 - **Task:** an optional execution step owned by the lead agent. Never a tracked item. Do not list tasks.
 - **Definition of Ready (Story):** goal, acceptance criteria, constraints and needed access are clear enough for the lead agent to start. Not every task has to be known.
 - **Definition of Ready (defect):** a lower bar. A symptom and an affected system can be enough.
-- **Definition of Done:** outcome verified, relevant tests pass, documentation updated where relevant, required acceptance in place. "The agent says it's done" does not count. Do not restate it per Story.
+- **Definition of Done:** outcome verified, relevant tests pass, documentation updated where relevant, required acceptance in place. "The agent says it's done" does not count. The completion record states what changed, the key decisions, and the verification evidence (test/build output, not "should work"). Do not restate it per Story.
 
 ## Modes
 
