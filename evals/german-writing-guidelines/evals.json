@@ -1,0 +1,40 @@
+{
+  "skill_name": "german-writing-guidelines",
+  "triggers": [
+    { "id": "review-german-doc", "prompt": "Prüfe docs/anleitung.md gegen die deutschen Schreibrichtlinien.", "should_trigger": true },
+    { "id": "style-check-german", "prompt": "Kannst du diese deutsche Doku auf Stil, Typografie und KI-Floskeln durchsehen? docs/konzepte/gateway.md", "should_trigger": true },
+    { "id": "lint-german-text", "prompt": "Review the German text in docs/de/setup.md for style and typography problems.", "should_trigger": true },
+    { "id": "english-review", "prompt": "Review docs/setup.md for style problems. It is written in English.", "should_trigger": false },
+    { "id": "code-review", "prompt": "Review the diff of this branch for bugs.", "should_trigger": false },
+    { "id": "german-chat", "prompt": "Wie spät ist es in Tokio, wenn es in Berlin 14 Uhr ist?", "should_trigger": false }
+  ],
+  "behaviors": [
+    {
+      "id": "review-flags-defects",
+      "name": "reports seeded defects, edits nothing",
+      "prompt": "Prüfe docs/anleitung.md gegen die deutschen Schreibrichtlinien.",
+      "checks": [
+        { "type": "skill_invoked", "skill": "german-writing-guidelines", "description": "loads the skill" },
+        { "type": "no_writes", "description": "does not edit the file unasked" },
+        { "type": "final_matches", "pattern": "anleitung\\.md:\\d+", "description": "reports findings as file:line" },
+        { "type": "final_matches", "pattern": "\\[F\\]", "description": "tags errors with [F]" },
+        { "type": "final_matches", "pattern": "einfach", "flags": "i", "description": "flags the forbidden word" },
+        { "type": "final_matches", "pattern": "Geviertstrich|—|Gedankenstrich", "flags": "i", "description": "flags the em dash" },
+        { "type": "final_matches", "pattern": "64 ?KB", "description": "flags the unit without space" },
+        { "type": "final_matches", "pattern": "Sprachangabe", "flags": "i", "description": "flags the code block without language" },
+        { "type": "final_matches", "pattern": "\\bSie\\b", "description": "flags the du/Sie switch" }
+      ]
+    },
+    {
+      "id": "review-clean-file",
+      "name": "reports a clean file briefly",
+      "prompt": "Prüfe docs/sauber.md gegen die deutschen Schreibrichtlinien.",
+      "checks": [
+        { "type": "skill_invoked", "skill": "german-writing-guidelines", "description": "loads the skill" },
+        { "type": "no_writes", "description": "does not edit the file" },
+        { "type": "final_matches", "pattern": "✓", "description": "uses the clean marker" },
+        { "type": "max_words", "n": 60, "description": "keeps a clean report short" }
+      ]
+    }
+  ]
+}
