@@ -1,0 +1,36 @@
+{
+  "skill_name": "write-briefing",
+  "triggers": [
+    { "id": "exec-summary", "prompt": "Turn these meeting notes into a one-page executive summary for the leadership review.", "should_trigger": true },
+    { "id": "status-update", "prompt": "I need a status update for the steering meeting based on the notes in meeting-notes/.", "should_trigger": true },
+    { "id": "briefing-german", "prompt": "Erstelle aus den Notizen ein kurzes Briefing für die Abteilungsleitung.", "should_trigger": true },
+    { "id": "decision-memo", "prompt": "Write a decision memo comparing the two queue options for the architecture group.", "should_trigger": true },
+    { "id": "teams-message", "prompt": "Draft a Teams message telling the team the launch moved.", "should_trigger": false },
+    { "id": "readme", "prompt": "Write a README section describing the setup steps.", "should_trigger": false }
+  ],
+  "behaviors": [
+    {
+      "id": "status-update-from-notes",
+      "name": "in-conversation briefing that separates fact from assumption",
+      "prompt": "Turn the notes in meeting-notes/ into a short status update for the steering meeting. Do not write any files.",
+      "checks": [
+        { "type": "skill_invoked", "skill": "write-briefing", "description": "loads the skill" },
+        { "type": "no_writes", "description": "answers in conversation by default" },
+        { "type": "final_matches", "pattern": "2026-12-04", "description": "carries the confirmed date" },
+        { "type": "final_matches", "pattern": "unverified|not verified|unclear|open", "flags": "i", "description": "flags unverified claims and open questions" },
+        { "type": "final_not_matches", "pattern": "approved|signed off by the board", "flags": "i", "description": "does not invent approvals" }
+      ]
+    },
+    {
+      "id": "german-briefing",
+      "name": "German briefing uses the German baseline",
+      "prompt": "Erstelle aus den Notizen in meeting-notes/ ein kurzes Status-Briefing auf Deutsch für die Abteilungsleitung. Schreibe die Antwort direkt hier, ohne Dateien.",
+      "checks": [
+        { "type": "skill_invoked", "skill": "german-writing-guidelines", "description": "loads the German baseline" },
+        { "type": "no_writes", "description": "answers in conversation" },
+        { "type": "final_matches", "pattern": "2026-12-04|4\\. Dezember", "description": "keeps the confirmed date" },
+        { "type": "final_not_matches", "pattern": "—", "description": "no em dash" }
+      ]
+    }
+  ]
+}

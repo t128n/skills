@@ -1,6 +1,6 @@
 ---
 name: write-briefing
-description: "Synthesize notes or documents into audience-specific briefings: pre-reads, executive summaries, decision memos, status updates, handoffs."
+description: "Synthesize notes or documents into audience-specific briefings: pre-reads, executive summaries, decision memos, status updates, handoffs. Use when the user asks for a briefing, summary or status update for a specific audience. Not for messages in the user's name (write-message), documentation (write-documentation), RFCs (write-rfc) or chat replies."
 ---
 
 # Briefing
@@ -10,15 +10,20 @@ Make the situation, conclusion, or request useful to the intended reader. A brie
 ## Workflow
 
 1. Identify purpose, audience, desired action, and format from the request and available context. Ask a focused question if the audience or a missing fact would materially change the result; otherwise state a consequential assumption and proceed. Match technical detail to the decision, not stereotypes about the audience.
-2. Review the provided sources and relevant existing project conventions. Extract material facts, dates, context, constraints, dependencies, and provenance. Distinguish newer from older information when supported, but do not assume newer necessarily supersedes older. Flag conflicting claims and missing evidence; repeated versions of the same claim are not independent corroboration.
+2. Review the provided sources and relevant existing project conventions:
+   - Extract material facts, dates, context, constraints, dependencies, and provenance.
+   - Distinguish newer from older information when supported, but do not assume newer necessarily supersedes older.
+   - Flag conflicting claims and missing evidence. Repeated versions of the same claim are not independent corroboration.
 3. Select the relevant format reference below. Lead with the essential conclusion or request when useful (BLUF), group supporting points beneath it, and put detail later. Use 3P for routine status by default; use mutually exclusive groupings when helpful, not as a rigid requirement. A short request may need only a paragraph.
-4. Separate confirmed findings, assumptions, inferences, and recommendations. Compare viable options fairly when a decision is required; if the evidence is insufficient, say so rather than manufacture a favorite. Do not imply a proposal is approved or invent progress, deadlines, owners, metrics, or citations.
+4. Separate confirmed findings, assumptions, inferences, and recommendations:
+   - Compare viable options fairly when a decision is required; if the evidence is insufficient, say so rather than manufacture a favorite.
+   - Do not imply a proposal is approved or invent progress, deadlines, owners, metrics, or citations.
 5. Check audience relevance, meaningful omissions, factual fidelity, traceability, uncertainty, and identifiable requests or next steps. Retain essential technical details for nontechnical audiences when they affect the outcome. Remove repetition, unsupported confidence, and framework-driven filler.
 
 ## Output and boundaries
 
 - Respond in conversation by default. Create or update a standalone Markdown document only when requested, using the project's existing locations, formats, and authoritative source links. Do not update external systems or contact people without explicit authorization.
-- Use the requested language, otherwise that of the intended audience or source. Preserve technical identifiers, precise values, and relevant source links. Never imply sources were consulted when they were not.
+- Use the requested language, otherwise that of the intended audience or source. For German briefings, load `german-writing-guidelines` as the style baseline. Preserve technical identifiers, precise values, and relevant source links. Never imply sources were consulted when they were not.
 - Adapt [the shared template](templates/briefing.md) only when helpful; omit or replace headings to suit the format. A management briefing can explain business impact only where evidence supports it.
 
 ## Choose a format
