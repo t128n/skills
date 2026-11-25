@@ -1,0 +1,106 @@
+{
+  "skill_name": "write-message",
+  "triggers": [
+    {
+      "id": "teams-draft",
+      "prompt": "Draft a Teams message to the team saying the deploy slips to tomorrow. Don't send it.",
+      "should_trigger": true
+    },
+    {
+      "id": "email-reply",
+      "prompt": "Write a reply in my name to the customer email asking when the fix ships. It should say next Tuesday.",
+      "should_trigger": true
+    },
+    {
+      "id": "github-comment",
+      "prompt": "Reply to the comment on issue 12 for me and say we are still deciding on the approach.",
+      "should_trigger": true
+    },
+    {
+      "id": "pr-body",
+      "prompt": "Write the description for this pull request.",
+      "should_trigger": false
+    },
+    {
+      "id": "commit-message",
+      "prompt": "Write a commit message for my staged changes.",
+      "should_trigger": false
+    },
+    {
+      "id": "explain",
+      "prompt": "What does the retry logic in src/queue.ts do?",
+      "should_trigger": false
+    }
+  ],
+  "behaviors": [
+    {
+      "id": "draft-has-trailer",
+      "name": "short human draft with trailer",
+      "prompt": "Draft a Teams message to the team: the deploy slips to tomorrow because the migration failed in staging. Don't send it.",
+      "checks": [
+        {
+          "type": "skill_invoked",
+          "skill": "write-message",
+          "description": "loads the skill"
+        },
+        {
+          "type": "final_matches",
+          "pattern": "^\\W*— from opencode\\s*$",
+          "flags": "m",
+          "description": "draft carries the trailer as its own line"
+        },
+        {
+          "type": "final_not_matches",
+          "pattern": "—(?! from opencode)",
+          "description": "no em dash outside the trailer"
+        },
+        {
+          "type": "final_not_matches",
+          "pattern": "hope this helps|don't hesitate|it's important to note|I'd be happy",
+          "flags": "i",
+          "on": "body",
+          "description": "no assistant boilerplate"
+        },
+        {
+          "type": "max_words",
+          "n": 200,
+          "description": "stays short, commentary included"
+        },
+        {
+          "type": "bash_not_matches",
+          "pattern": "curl|\\bgh (api|issue comment|pr comment)|sendmail",
+          "description": "does not send anything"
+        }
+      ]
+    },
+    {
+      "id": "german-draft",
+      "name": "German draft uses the German baseline",
+      "prompt": "Schreibe eine kurze Teams-Nachricht auf Deutsch an die Kollegen: Das Deployment ist auf morgen verschoben, weil die Migration im Staging fehlgeschlagen ist. Nicht senden.",
+      "checks": [
+        {
+          "type": "skill_invoked",
+          "skill": "german-writing-guidelines",
+          "description": "loads the German baseline"
+        },
+        {
+          "type": "final_matches",
+          "pattern": "^\\W*— from opencode\\s*$",
+          "flags": "m",
+          "description": "draft carries the trailer as its own line"
+        },
+        {
+          "type": "final_not_matches",
+          "pattern": "—(?! from opencode)",
+          "description": "no em dash outside the trailer"
+        },
+        {
+          "type": "final_not_matches",
+          "pattern": "\\.\\.\\.",
+          "on": "body",
+          "description": "no three-dot ellipsis"
+        }
+      ]
+    }
+  ]
+}
