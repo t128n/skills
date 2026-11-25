@@ -19,6 +19,7 @@ Deutsche Adaption der Vercel Writing Guidelines (vercel-labs/writing-guidelines)
 - Der aufrufende Skill bestimmt Dokumenttyp, Struktur und Antwortsprache. Bei `write-message` geht `~/.agents/writing-style.md` vor (Anrede, Grußformel, Wörter)
 - Fehlt eine Festlegung: nicht raten, sondern Uneinheitlichkeit im Dokument melden (z. B. Wechsel zwischen `du` und `Sie`)
 - Code, Bezeichner, Befehle, Logausgaben und UI-Beschriftungen bleiben in ihrer Originalsprache und werden nicht nach diesen Regeln geprüft
+- Ausnahme für `write-message`: die Angabe "— from opencode" bleibt unverändert, obwohl sie einen Gedankenstrich enthält
 
 ## Vorgehen beim Prüfen
 
