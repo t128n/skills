@@ -1,0 +1,34 @@
+{
+  "skill_name": "write-documentation",
+  "triggers": [
+    { "id": "howto-de", "prompt": "Schreibe eine Anleitung, wie man eine Sandbox einrichtet. Sie gehört in docs/anleitungen/.", "should_trigger": true },
+    { "id": "readme-en", "prompt": "Write a README for this repository that explains what it is and how to get started.", "should_trigger": true },
+    { "id": "rewrite-docs", "prompt": "Rewrite docs/concepts/gateway.md so that it matches our style guide.", "should_trigger": true },
+    { "id": "rfc", "prompt": "Write an RFC proposing that we move the job queue to Postgres.", "should_trigger": false },
+    { "id": "message", "prompt": "Draft a short Teams message telling the team the deploy is delayed.", "should_trigger": false },
+    { "id": "briefing", "prompt": "Summarize these meeting notes into a one-page status update for management.", "should_trigger": false }
+  ],
+  "behaviors": [
+    {
+      "id": "brief-before-draft",
+      "name": "shows brief and outline before drafting",
+      "prompt": "Schreibe eine Anleitung, wie man eine Sandbox einrichtet. Sie gehört in docs/anleitungen/.",
+      "checks": [
+        { "type": "skill_invoked", "skill": "write-documentation", "description": "loads the skill" },
+        { "type": "skill_invoked", "skill": "german-writing-guidelines", "description": "loads the German baseline" },
+        { "type": "no_write_matching", "content": "^# ", "flags": "m", "description": "does not write the document before the outline is agreed" },
+        { "type": "final_matches", "pattern": "Gliederung|Outline|Brief", "flags": "i", "description": "presents a brief or outline" },
+        { "type": "final_matches", "pattern": "Sandbox", "description": "uses the glossary term" }
+      ]
+    },
+    {
+      "id": "rfc-not-doc",
+      "name": "leaves RFCs to write-rfc",
+      "prompt": "Write an RFC proposing that we move the job queue to Postgres.",
+      "checks": [
+        { "type": "skill_not_invoked", "skill": "write-documentation", "description": "does not use write-documentation" },
+        { "type": "skill_invoked", "skill": "write-rfc", "description": "uses write-rfc" }
+      ]
+    }
+  ]
+}

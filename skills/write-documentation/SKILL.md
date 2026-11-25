@@ -1,9 +1,9 @@
 ---
 name: write-documentation
-description: "Write or revise official technical documentation (guidelines, how-tos, tutorials, reference, explanations, READMEs) in German or English, following the project's style guide. Not for specs, plans, ADRs, RFCs, or messages (use communicate)."
+description: "Write or revise official technical documentation (guidelines, how-tos, tutorials, reference, explanations, READMEs) in German or English, following the project's style guide. Use when asked to write, rewrite or extend project docs. Not for specs, tickets, ADRs, RFCs (write-rfc), briefings (write-briefing) or messages (write-message)."
 ---
 
-# Write doc
+# Write documentation
 
 Write documentation that reads as if one careful author wrote all of it. Consistency comes from three sources, used in this order: the project's writing style guide, its glossary, and its best existing documents. Your own default voice comes last.
 
@@ -17,8 +17,9 @@ Write documentation that reads as if one careful author wrote all of it. Consist
 
 1. Read `docs/WRITING_STYLE.md` and `GLOSSARY.md`. If the repository keeps its prose style guide somewhere else, use that one.
 2. If no style guide exists, say so once. Then continue: read two or three neighbouring documents of the same type and language and follow their conventions, so that the new document at least matches its surroundings.
-3. For German documents, also load `german-writing-guidelines` as the baseline for German prose, grammar, typography, and anti-patterns. Project rules in `docs/WRITING_STYLE.md` and `GLOSSARY.md` take precedence where they differ; `write-documentation` still governs the authoring workflow, document types, and bilingual pairing.
-4. Read the reference examples the style guide names for this document type. Examples carry tone more reliably than rules do.
+3. For English documents there is no baseline skill: the style guide and the neighbouring documents are the only source. Say so if neither exists.
+4. For German documents, also load `german-writing-guidelines` as the baseline for German prose, grammar, typography, and anti-patterns. Project rules in `docs/WRITING_STYLE.md` and `GLOSSARY.md` take precedence where they differ; `write-documentation` still governs the authoring workflow, document types, and bilingual pairing.
+5. Read the reference examples the style guide names for this document type. Examples carry tone more reliably than rules do.
 
 ## Step 2: Settle language, type and reader
 
